@@ -3,6 +3,12 @@
 ![image](https://github.com/153437803/MuPDF/blob/master/Screenrecorder-2018-09-22.gif )
 
 ##
+## TODO
+```
+编辑精简MuPDF1.1.3
+```
+
+##
 ## 打开RAW文件夹[本地文件]
 ```
 MupdfUtil.openFromRaw(final Context context, final int id);
