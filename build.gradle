@@ -1,0 +1,17 @@
+buildscript {
+	repositories {
+		jcenter()
+		google()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:3.1.4'
+		// http://git.ghostscript.com/?p=mupdf-android-fitz.git
+	}
+}
+
+allprojects {
+	repositories {
+		jcenter()
+		google()
+	}
+}

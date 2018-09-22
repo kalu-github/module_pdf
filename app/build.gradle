@@ -1,0 +1,22 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionName '1.13.0'
+        versionCode 30
+
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:25.+'
+    implementation project(':lib')
+}
