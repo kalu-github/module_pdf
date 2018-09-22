@@ -3,9 +3,10 @@
 ![image](https://github.com/153437803/MuPDF/blob/master/Screenrecorder-2018-09-22.gif )
 
 ##
-## TODO
+## 本库简介
 ```
-编辑精简MuPDF1.1.3
+基于MuPDF1.1.3编译, 可以打开本地文件, 和网络文件
+打开网络文件需要okhttp获取网络文件的byte[]或者InputStream
 ```
 
 ##
@@ -37,4 +38,10 @@ MupdfUtil.openFromByte(final Context context, final byte[] bytes);
 ## 打开InputStream文件[网络文件]
 ```
 MupdfUtil.openFromInputStream(final Context context, final InputStream stm);
+```
+
+##
+## TODO
+```
+编辑精简MuPDF1.1.3
 ```
