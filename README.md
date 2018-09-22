@@ -15,7 +15,7 @@ MupdfUtil.openFromAsset(final Context context, final String name);
 ```
 
 ##
-## 打开Asset文件夹[本地文件]
+## 打开sd卡文件[本地文件]
 ```
 3.打开sd卡文件
 MupdfUtil.openFromLocal(final Context context, final String name);
