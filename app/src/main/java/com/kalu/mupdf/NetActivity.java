@@ -67,7 +67,7 @@ public final class NetActivity extends AppCompatActivity {
             @Override
             protected Object doInBackground(Void... voids) {
 
-                String url = "http://www.gov.cn/zhengce/pdfFile/2003_PDF.pdf";
+                String url = "http://cdn07.foxitsoftware.cn/pub/foxit/manual/phantom/en_us/API%20Reference%20for%20Application%20Communication.pdf";
                 OkHttpClient okHttpClient = new OkHttpClient();
                 final Request request = new Request.Builder()
                         .url(url)
