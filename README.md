@@ -5,7 +5,7 @@
 ##
 ## 本库简介
 ```
-基于MuPDF1.1.3编译, 可以打开本地文件, 网络文件
+基于MuPDF1.13编译, 可以打开本地文件, 网络文件
 打开网络文件需要okhttp获取网络文件的byte[]或者InputStream
 ```
 
@@ -43,5 +43,5 @@ MupdfUtil.openFromInputStream(final Context context, final InputStream stm);
 ##
 ## TODO
 ```
-编辑精简MuPDF1.1.3
+编辑精简MuPDF1.13
 ```
