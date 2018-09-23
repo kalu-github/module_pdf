@@ -43,5 +43,6 @@ MupdfUtil.openFromInputStream(final Context context, final InputStream stm);
 ##
 ## TODO
 ```
-编辑精简MuPDF1.13
+1.编辑精简MuPDF1.13
+2.解析进度监听
 ```
