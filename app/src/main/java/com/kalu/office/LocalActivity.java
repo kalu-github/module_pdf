@@ -64,7 +64,7 @@ public final class LocalActivity extends AppCompatActivity {
         view.setAdapter(adapter);
 
 
-        final TextView number = (TextView) findViewById(R.id.count);
+        final TextView number = findViewById(R.id.count);
         number.setText(1 + " / " + count);
 //
         view.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
