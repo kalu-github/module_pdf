@@ -19,7 +19,7 @@
         android:padding="16dp"
         android:src="@drawable/ic_back" />
 
-    <android.support.v4.view.ViewPager
+    <com.artifex.mupdf.view.PDFPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -1,14 +1,14 @@
-package com.kalu.mupdf;
+package com.kalu.office;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -21,23 +21,15 @@ import com.artifex.mupdf.fitz.android.AndroidDrawDevice;
 import com.artifex.mupdf.util.MupdfUtil;
 import com.artifex.mupdf.view.PageView;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import java.util.ArrayList;
 
 public final class LocalActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
 
-        final ViewPager view = (ViewPager) findViewById(R.id.pager);
-        final Document document = ((OfficeAdapter) view.getAdapter()).getDocument();
-        if (null != document) {
-            document.destroy();
-        }
+        final ViewPager view = findViewById(R.id.pager);
+        ((OfficeAdapter) view.getAdapter()).clearPage();
 
         super.onBackPressed();
     }
@@ -59,16 +51,22 @@ public final class LocalActivity extends AppCompatActivity {
         final Document document = MupdfUtil.openFromRaw(getApplicationContext(), R.raw.test);
         if (null == document) return;
 
+        final ArrayList<Page> list = new ArrayList<>();
+        final int count = document.countPages();
+        for (int j = 0; j < count; j++) {
+            Page page = document.loadPage(j);
+            list.add(page);
+        }
+
         // step2
         final ViewPager view = (ViewPager) findViewById(R.id.pager);
-        final OfficeAdapter adapter = new OfficeAdapter(document);
+        final OfficeAdapter adapter = new OfficeAdapter(list, document);
         view.setAdapter(adapter);
 
 
         final TextView number = (TextView) findViewById(R.id.count);
-        final int count = document.countPages();
         number.setText(1 + " / " + count);
-
+//
         view.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
@@ -88,21 +86,31 @@ public final class LocalActivity extends AppCompatActivity {
     private final class OfficeAdapter extends PagerAdapter {
 
         private Document document;
+        private final ArrayList<Page> mData = new ArrayList<>();
 
-        public OfficeAdapter(Document document) {
-            this.document = document;
+        public final void clearPage() {
+            for (Page b : mData) {
+                if (null != b) {
+                    b.destroy();
+                }
+            }
+
+            if (null != document) {
+                document.destroy();
+                document = null;
+            }
         }
 
-        public Document getDocument() {
-            return document;
+        public OfficeAdapter(ArrayList<Page> list, Document document) {
+            clearPage();
+            this.mData.clear();
+            this.mData.addAll(list);
+            this.document = document;
         }
 
         @Override
         public int getCount() {
-            if (null == document)
-                return 0;
-
-            return document.countPages();
+            return mData.size();
         }
 
         @Override
@@ -124,18 +132,23 @@ public final class LocalActivity extends AppCompatActivity {
 
         private final View createItem(int position) {
 
+
             final PageView item = new PageView(getApplicationContext());
-            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             item.setLayoutParams(layoutParams);
 
-            Page page = document.loadPage(position);
-            WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-            DisplayMetrics dm = new DisplayMetrics();
-            wm.getDefaultDisplay().getMetrics(dm);
-            int width = dm.widthPixels;         //
-            Matrix ctm = AndroidDrawDevice.fitPageWidth(page, width);
-            Bitmap bitmap = AndroidDrawDevice.drawPage(page, ctm);
-            item.setBitmap(bitmap, true, null, null);
+            try {
+                final Page page = mData.get(position);
+                WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+                DisplayMetrics dm = new DisplayMetrics();
+                wm.getDefaultDisplay().getMetrics(dm);
+                Bitmap bitmap = AndroidDrawDevice.drawPageFit(page, dm.widthPixels, dm.heightPixels);
+                item.setBitmap(bitmap, false, null, null);
+                item.setTag(bitmap);
+            } catch (Exception e) {
+                Log.e("pdf", e.getMessage(), e);
+            }
+
             return item;
         }
     }
