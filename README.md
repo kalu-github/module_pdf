@@ -39,9 +39,3 @@ MupdfUtil.openFromByte(final Context context, final byte[] bytes);
 ```
 MupdfUtil.openFromInputStream(final Context context, final InputStream stm);
 ```
-
-##
-## TODO
-```
-编辑精简MuPDF1.1.3
-```
