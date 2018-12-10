@@ -10,10 +10,20 @@
         android:gravity="center"
         android:text="tbs_title" />
 
-    <FrameLayout
+    <lib.kalu.tbs.TbsLayout
         android:id="@+id/tbs_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="#cccccc"
+            android:gravity="center"/>
+
+    </lib.kalu.tbs.TbsLayout>
 
 </merge>

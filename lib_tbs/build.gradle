@@ -22,4 +22,5 @@ android {
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 }
