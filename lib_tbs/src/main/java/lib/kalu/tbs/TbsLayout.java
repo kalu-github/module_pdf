@@ -42,7 +42,7 @@ import okhttp3.ResponseBody;
 public final class TbsLayout extends FrameLayout {
 
     private final String FOLDER = TbsLayout.class.getSimpleName().toLowerCase();
-    private OkHttpClient mOkHttpClient;
+    private OkHttpClient mOkHttpClient = new OkHttpClient();
 
     public TbsLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -53,14 +53,6 @@ public final class TbsLayout extends FrameLayout {
     }
 
     public final void init(final Context context, final OnTbsChangeListener listener) {
-
-        boolean tbsCoreInited = QbSdk.isTbsCoreInited();
-        Log.e("kalu", "tbsCoreInited = "+tbsCoreInited);
-        if (tbsCoreInited) {
-            QbSdk.preInit(context);
-            listener.onOpen();
-            return;
-        }
 
         final HashMap<String, Object> map = new HashMap<>();
         map.put(TbsCoreSettings.TBS_SETTINGS_USE_SPEEDY_CLASSLOADER, true);
@@ -110,18 +102,6 @@ public final class TbsLayout extends FrameLayout {
         if (TextUtils.isEmpty(url)) {
             Toast.makeText(getContext(), "网络地址不存在", Toast.LENGTH_SHORT).show();
             return;
-        }
-
-        final TbsReaderView tbs = new TbsReaderView(activity, new TbsReaderView.ReaderCallback() {
-            @Override
-            public void onCallBackAction(Integer integer, Object o, Object o1) {
-
-            }
-        });
-        addView(tbs);
-
-        if (null == mOkHttpClient) {
-            mOkHttpClient = new OkHttpClient();
         }
 
         Observable.create(new ObservableOnSubscribe<String[]>() {
@@ -183,27 +163,28 @@ public final class TbsLayout extends FrameLayout {
                 }
             }
         }).subscribeOn(Schedulers.io())
-                .map(new Function<String[], String[]>() {
+                .map(new Function<String[], Object[]>() {
                     @Override
-                    public String[] apply(String[] s) {
+                    public Object[] apply(String[] s) {
                         if (null == s) {
                             return null;
                         } else {
+                            final TbsReaderView tbs = new TbsReaderView(activity, null);
                             boolean result = tbs.preOpen(s[1], false);
-                            return new String[]{s[0], String.valueOf(result)};
+                            return new Object[]{s[0], String.valueOf(result), tbs};
                         }
                     }
                 })
                 .subscribeOn(AndroidSchedulers.mainThread())
-                .map(new Function<String[], Bundle>() {
+                .map(new Function<Object[], Object[]>() {
                     @Override
-                    public Bundle apply(String[] strings) {
+                    public Object[] apply(Object[] strings) {
 
-                        if (null != strings && Boolean.parseBoolean(strings[1])) {
+                        if (null != strings && Boolean.parseBoolean(strings[1].toString())) {
                             final Bundle bundle = new Bundle();
-                            bundle.putString("filePath", strings[0]);
+                            bundle.putString("filePath", strings[0].toString());
                             bundle.putString("tempPath", Environment.getExternalStorageDirectory().getPath());
-                            return bundle;
+                            return new Object[]{bundle, strings[2]};
                         } else {
                             return null;
                         }
@@ -212,13 +193,14 @@ public final class TbsLayout extends FrameLayout {
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Bundle>() {
+                .subscribe(new Consumer<Object[]>() {
                     @Override
-                    public void accept(Bundle bundle) {
-                        if (null == bundle) {
+                    public void accept(Object[] objects) {
+                        if (null == objects[0] || null == objects[1]) {
                             Toast.makeText(getContext(), "打开失败", Toast.LENGTH_SHORT).show();
                         } else {
-                            tbs.openFile(bundle);
+                            TbsLayout.this.addView((TbsReaderView) objects[1]);
+                            ((TbsReaderView) objects[1]).openFile((Bundle) objects[0]);
                         }
                     }
                 });
