@@ -48,7 +48,19 @@ public final class TbsLayout extends FrameLayout {
         super(context, attrs);
     }
 
+    public final void clear() {
+
+    }
+
     public final void init(final Context context, final OnTbsChangeListener listener) {
+
+        boolean tbsCoreInited = QbSdk.isTbsCoreInited();
+        Log.e("kalu", "tbsCoreInited = "+tbsCoreInited);
+        if (tbsCoreInited) {
+            QbSdk.preInit(context);
+            listener.onOpen();
+            return;
+        }
 
         final HashMap<String, Object> map = new HashMap<>();
         map.put(TbsCoreSettings.TBS_SETTINGS_USE_SPEEDY_CLASSLOADER, true);

@@ -109,7 +109,8 @@
         <activity
             android:name="com.kalu.office.TbsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:theme="@style/ThemeWhite" />
+            android:theme="@style/ThemeWhite"
+            android:process=":wps"/>
 
     </application>
 </manifest>

@@ -12,8 +12,9 @@ public class TbsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+       // System.exit(0);
         super.onBackPressed();
-        QbSdk.clear(getApplicationContext());
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 
     @Override
