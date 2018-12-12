@@ -12,7 +12,7 @@
         android:layout_marginBottom="20dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="打开本地文件"
+        android:text="mupdf打开本地pdf文件"
         android:textColor="@color/colorWhite"
         android:textSize="18sp" />
 
@@ -23,7 +23,7 @@
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:layout_marginBottom="20dp"
-        android:text="打开网络文件"
+        android:text="mupdf打开网络pdf文件"
         android:textColor="@color/colorWhite"
         android:textSize="18sp" />
 
@@ -33,7 +33,7 @@
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="打开WPS文件"
+        android:text="tbs打开网络pdf文件"
         android:textColor="@color/colorWhite"
         android:textSize="18sp" />
 

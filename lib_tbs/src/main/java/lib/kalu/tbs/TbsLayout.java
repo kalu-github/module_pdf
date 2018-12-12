@@ -48,10 +48,6 @@ public final class TbsLayout extends FrameLayout {
         super(context, attrs);
     }
 
-    public final void clear() {
-
-    }
-
     public final void init(final Context context, final OnTbsChangeListener listener) {
 
         final HashMap<String, Object> map = new HashMap<>();
