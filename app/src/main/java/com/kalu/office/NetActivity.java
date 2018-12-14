@@ -38,6 +38,9 @@ public final class NetActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         final ViewPager view = findViewById(R.id.pager);
+        if(null == view.getAdapter())
+            return;
+
         ((OfficeAdapter) view.getAdapter()).clearPage();
 
         super.onBackPressed();
@@ -139,9 +142,12 @@ public final class NetActivity extends AppCompatActivity {
         private final ArrayList<Page> mData = new ArrayList<>();
 
         public final void clearPage() {
-            for (Page b : mData) {
-                if (null != b) {
-                    b.destroy();
+
+            if(null != nData){
+                for (Page b : mData) {
+                    if (null != b) {
+                        b.destroy();
+                    }
                 }
             }
 
