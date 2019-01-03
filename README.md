@@ -7,34 +7,3 @@
 WPS文件预览, 基于TBS编译, 可以打开本地文件, 网络文件
 PDF文件预览, 基于MuPDF1.1.3编译, 可以打开本地文件, 网络文件
 ```
-
-##
-#### 打开RAW文件夹[本地文件]
-```
-MupdfUtil.openFromRaw(final Context context, final int id);
-```
-
-##
-#### 打开Asset文件夹[本地文件]
-```
-MupdfUtil.openFromAsset(final Context context, final String name);
-```
-
-##
-#### 打开sd卡文件[本地文件]
-```
-3.打开sd卡文件
-MupdfUtil.openFromLocal(final Context context, final String name);
-```
-
-##
-#### 打开byte[]文件[网络文件]
-```
-MupdfUtil.openFromByte(final Context context, final byte[] bytes);
-```
-
-##
-#### 打开InputStream文件[网络文件]
-```
-MupdfUtil.openFromInputStream(final Context context, final InputStream stm);
-```
