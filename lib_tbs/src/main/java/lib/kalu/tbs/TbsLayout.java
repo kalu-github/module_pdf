@@ -21,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.Map;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -49,6 +50,22 @@ public final class TbsLayout extends FrameLayout {
     }
 
     public final void init(final Context context, final OnTbsChangeListener listener) {
+
+//        QbSdk.unForceSysWebView();
+//        QbSdk.closeFileReader(context);
+//        QbSdk.clear(context);
+//        QbSdk.unPreInit(context);
+//        QbSdk.clearAllWebViewCache(context, true);
+
+//        Log.e("apps", QbSdk.isTbsCoreInited()+"");
+//        Log.e("apps", QbSdk.sIsVersionPrinted+"");
+//        Log.e("apps", QbSdk.mDisableUseHostBackupCore+"");
+//
+//        if(QbSdk.isTbsCoreInited()){
+//            QbSdk.preInit(context);
+//            listener.onOpen();
+//            return;
+//        }
 
         final HashMap<String, Object> map = new HashMap<>();
         map.put(TbsCoreSettings.TBS_SETTINGS_USE_SPEEDY_CLASSLOADER, true);

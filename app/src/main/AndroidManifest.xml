@@ -4,6 +4,7 @@
     package="com.kalu.office"
     android:installLocation="auto">
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -109,7 +110,7 @@
         <activity
             android:name="com.kalu.office.TbsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:theme="@style/ThemeWhite"
+            android:theme="@style/ThemeTBS"
             android:process=":wps"/>
 
     </application>

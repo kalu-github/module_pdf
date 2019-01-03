@@ -30,8 +30,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-//import com.artifex.mupdf.util.MupdfUtil;
-
 public final class NetActivity extends AppCompatActivity {
 
     @Override
@@ -143,7 +141,7 @@ public final class NetActivity extends AppCompatActivity {
 
         public final void clearPage() {
 
-            if(null != nData){
+            if(null != mData){
                 for (Page b : mData) {
                     if (null != b) {
                         b.destroy();
