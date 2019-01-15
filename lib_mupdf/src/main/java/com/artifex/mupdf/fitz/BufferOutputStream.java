@@ -1,8 +1,10 @@
 package com.artifex.mupdf.fitz;
 
+import java.io.IOException;
 import java.io.OutputStream;
 
-public class BufferOutputStream extends OutputStream {
+public class BufferOutputStream extends OutputStream
+{
 	protected Buffer buffer;
 	protected int position;
 	protected int resetPosition;

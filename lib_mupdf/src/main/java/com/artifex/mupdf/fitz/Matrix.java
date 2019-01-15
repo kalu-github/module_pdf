@@ -105,8 +105,8 @@ public class Matrix
 			c = save_a;
 			d = save_b;
 		} else {
-			float sin = (float) Math.sin(degrees * Math.PI / 180.0);
-			float cos = (float) Math.cos(degrees * Math.PI / 180.0);
+			float sin = (float)Math.sin(degrees * Math.PI / 180.0);
+			float cos = (float)Math.cos(degrees * Math.PI / 180.0);
 			float save_a = a;
 			float save_b = b;
 			a = cos * save_a + sin * c;
@@ -158,8 +158,8 @@ public class Matrix
 			sin = -1;
 			cos = 0;
 		} else {
-			sin = (float) Math.sin(degrees * Math.PI / 180.0);
-			cos = (float) Math.cos(degrees * Math.PI / 180.0);
+			sin = (float)Math.sin(degrees * Math.PI / 180.0);
+			cos = (float)Math.cos(degrees * Math.PI / 180.0);
 		}
 
 		return new Matrix(cos, sin, -sin, cos, 0, 0);

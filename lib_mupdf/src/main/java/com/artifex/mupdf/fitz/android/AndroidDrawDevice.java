@@ -58,8 +58,8 @@ public final class AndroidDrawDevice extends NativeDevice
 		float scaleH = (float)fitW / pageW;
 		float scaleV = (float)fitH / pageH;
 		float scale = scaleH < scaleV ? scaleH : scaleV;
-		scaleH = (float) Math.floor(pageW * scale) / pageW;
-		scaleV = (float) Math.floor(pageH * scale) / pageH;
+		scaleH = (float)Math.floor(pageW * scale) / pageW;
+		scaleV = (float)Math.floor(pageH * scale) / pageH;
 		return new Matrix(scaleH, scaleV);
 	}
 
@@ -71,7 +71,7 @@ public final class AndroidDrawDevice extends NativeDevice
 		Rect bbox = page.getBounds();
 		float pageW = bbox.x1 - bbox.x0;
 		float scale = (float)fitW / pageW;
-		scale = (float) Math.floor(pageW * scale) / pageW;
+		scale = (float)Math.floor(pageW * scale) / pageW;
 		return new Matrix(scale);
 	}
 

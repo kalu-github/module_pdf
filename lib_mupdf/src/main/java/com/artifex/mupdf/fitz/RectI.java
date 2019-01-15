@@ -24,10 +24,10 @@ public class RectI
 	}
 
 	public RectI(Rect r) {
-		this.x0 = (int) Math.floor(r.x0);
-		this.y0 = (int) Math.ceil(r.y0);
-		this.x1 = (int) Math.floor(r.x1);
-		this.y1 = (int) Math.ceil(r.y1);
+		this.x0 = (int)Math.floor(r.x0);
+		this.y0 = (int)Math.ceil(r.y0);
+		this.x1 = (int)Math.floor(r.x1);
+		this.y1 = (int)Math.ceil(r.y1);
 	}
 
 	public String toString() {
@@ -75,10 +75,10 @@ public class RectI
 		bx0 += dy0 + tm.f;
 		bx1 += dy1 + tm.f;
 
-		x0 = (int) Math.floor(ax0);
-		x1 = (int) Math.ceil(ax1);
-		y0 = (int) Math.floor(bx0);
-		y1 = (int) Math.ceil(bx1);
+		x0 = (int)Math.floor(ax0);
+		x1 = (int)Math.ceil(ax1);
+		y0 = (int)Math.floor(bx0);
+		y1 = (int)Math.ceil(bx1);
 
 		return this;
 	}

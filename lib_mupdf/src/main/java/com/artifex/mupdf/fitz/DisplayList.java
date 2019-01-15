@@ -15,10 +15,10 @@ public class DisplayList
 		pointer = 0;
 	}
 
-	private native long newNative();
+	private native long newNative(Rect mediabox);
 
-	public DisplayList() {
-		pointer = newNative();
+	public DisplayList(Rect mediabox) {
+		pointer = newNative(mediabox);
 	}
 
 	private DisplayList(long p) {
@@ -32,7 +32,7 @@ public class DisplayList
 		return toStructuredText(null);
 	}
 
-	public native Rect[] search(String needle);
+	public native Quad[] search(String needle);
 
 	public native void run(Device dev, Matrix ctm, Rect scissor, Cookie cookie);
 
