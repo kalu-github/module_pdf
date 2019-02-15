@@ -20,5 +20,5 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.+'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation project(':lib_mupdf')
-    api project(':lib_tbs')
+    implementation project(':lib_tbs')
 }
