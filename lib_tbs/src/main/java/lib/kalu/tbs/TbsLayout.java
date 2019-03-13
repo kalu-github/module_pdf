@@ -67,7 +67,7 @@ public final class TbsLayout extends FrameLayout {
 //            return;
 //        }
 
-        final HashMap<String, Object> map = new HashMap<>();
+        final HashMap<String, Object> map = new HashMap<>(1);
         map.put(TbsCoreSettings.TBS_SETTINGS_USE_SPEEDY_CLASSLOADER, true);
         QbSdk.initTbsSettings(map);
         QbSdk.setDisableUnpreinitBySwitch(false);
