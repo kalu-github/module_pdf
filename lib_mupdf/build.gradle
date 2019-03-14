@@ -15,4 +15,6 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.+'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 }
