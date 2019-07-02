@@ -110,8 +110,13 @@
         <activity
             android:name="com.kalu.office.TbsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:theme="@style/ThemeTBS"
-            android:process=":wps"/>
+            android:process=":wps"
+            android:theme="@style/ThemeTBS" />
+
+        <activity
+            android:name="com.kalu.office.SignActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/ThemeTBS" />
 
     </application>
 </manifest>
