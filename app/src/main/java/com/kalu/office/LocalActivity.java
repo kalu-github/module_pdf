@@ -48,7 +48,7 @@ public final class LocalActivity extends AppCompatActivity {
         });
 
         // step1
-        final Document document = MupdfUtil.openFromRaw(getApplicationContext(), R.raw.test2);
+        final Document document = MupdfUtil.openFromRaw(getApplicationContext(), R.raw.test);
         if (null == document) return;
 
         final ArrayList<Page> list = new ArrayList<>();
