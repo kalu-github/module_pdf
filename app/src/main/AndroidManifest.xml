@@ -4,23 +4,9 @@
     package="com.kalu.office"
     android:installLocation="auto">
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name">
-
-        <service
-            android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
-            android:label="dexopt"
-            android:process=":dexopt" />
 
         <activity
             android:name="com.kalu.office.MainActivity"
@@ -36,74 +22,188 @@
         <activity
             android:name="com.kalu.office.LocalActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:hardwareAccelerated="false"
             android:theme="@style/ThemeWhite">
-
-            <intent-filter
-                android:scheme="http"
-                tools:ignore="AppLinkUrlError">
+            <intent-filter>
+                <!-- match content and file requests with known mime-type -->
                 <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
 
+                <data android:scheme="content" />
+                <data android:scheme="file" />
                 <data android:mimeType="application/pdf" />
                 <data android:mimeType="application/vnd.ms-xpsdocument" />
                 <data android:mimeType="application/oxps" />
                 <data android:mimeType="application/x-cbz" />
+                <data android:mimeType="application/vnd.comicbook+zip" />
                 <data android:mimeType="application/epub+zip" />
+                <data android:mimeType="application/x-fictionbook" />
                 <data android:mimeType="text/xml" />
             </intent-filter>
-            <intent-filter
-                android:scheme="http"
-                tools:ignore="AppLinkUrlError">
+            <intent-filter>
+                <!-- match file requests with path and no mime-type -->
                 <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
 
+                <data android:scheme="file" />
+                <data android:host="*" />
                 <data android:pathPattern=".*\\.pdf" />
                 <data android:pathPattern=".*\\.xps" />
                 <data android:pathPattern=".*\\.oxps" />
                 <data android:pathPattern=".*\\.cbz" />
                 <data android:pathPattern=".*\\.epub" />
                 <data android:pathPattern=".*\\.fb2" />
+                <data android:pathPattern=".*\\..*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\.xps" />
+                <data android:pathPattern=".*\\..*\\.oxps" />
+                <data android:pathPattern=".*\\..*\\.cbz" />
+                <data android:pathPattern=".*\\..*\\.epub" />
+                <data android:pathPattern=".*\\..*\\.fb2" />
+                <data android:pathPattern=".*\\..*\\..*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\..*\\.xps" />
+                <data android:pathPattern=".*\\..*\\..*\\.oxps" />
+                <data android:pathPattern=".*\\..*\\..*\\.cbz" />
+                <data android:pathPattern=".*\\..*\\..*\\.epub" />
+                <data android:pathPattern=".*\\..*\\..*\\.fb2" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.xps" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.oxps" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.cbz" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.epub" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.fb2" />
+            </intent-filter>
+            <intent-filter>
+                <!-- match file scheme requests with path and any mime-type -->
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.pdf" />
+                <data android:pathPattern=".*\\.xps" />
+                <data android:pathPattern=".*\\.oxps" />
+                <data android:pathPattern=".*\\.cbz" />
+                <data android:pathPattern=".*\\.epub" />
+                <data android:pathPattern=".*\\.fb2" />
+                <data android:pathPattern=".*\\..*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\.xps" />
+                <data android:pathPattern=".*\\..*\\.oxps" />
+                <data android:pathPattern=".*\\..*\\.cbz" />
+                <data android:pathPattern=".*\\..*\\.epub" />
+                <data android:pathPattern=".*\\..*\\.fb2" />
+                <data android:pathPattern=".*\\..*\\..*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\..*\\.xps" />
+                <data android:pathPattern=".*\\..*\\..*\\.oxps" />
+                <data android:pathPattern=".*\\..*\\..*\\.cbz" />
+                <data android:pathPattern=".*\\..*\\..*\\.epub" />
+                <data android:pathPattern=".*\\..*\\..*\\.fb2" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.xps" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.oxps" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.cbz" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.epub" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.fb2" />
+                <data android:mimeType="*/*" />
             </intent-filter>
         </activity>
 
         <activity
             android:name="com.kalu.office.NetActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:hardwareAccelerated="false"
             android:theme="@style/ThemeWhite">
-
-            <intent-filter
-                android:scheme="http"
-                tools:ignore="AppLinkUrlError">
+            <intent-filter>
+                <!-- match content and file requests with known mime-type -->
                 <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
 
+                <data android:scheme="content" />
+                <data android:scheme="file" />
                 <data android:mimeType="application/pdf" />
                 <data android:mimeType="application/vnd.ms-xpsdocument" />
                 <data android:mimeType="application/oxps" />
                 <data android:mimeType="application/x-cbz" />
+                <data android:mimeType="application/vnd.comicbook+zip" />
                 <data android:mimeType="application/epub+zip" />
+                <data android:mimeType="application/x-fictionbook" />
                 <data android:mimeType="text/xml" />
             </intent-filter>
-            <intent-filter
-                android:scheme="http"
-                tools:ignore="AppLinkUrlError">
+            <intent-filter>
+                <!-- match file requests with path and no mime-type -->
                 <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
 
+                <data android:scheme="file" />
+                <data android:host="*" />
                 <data android:pathPattern=".*\\.pdf" />
                 <data android:pathPattern=".*\\.xps" />
                 <data android:pathPattern=".*\\.oxps" />
                 <data android:pathPattern=".*\\.cbz" />
                 <data android:pathPattern=".*\\.epub" />
                 <data android:pathPattern=".*\\.fb2" />
+                <data android:pathPattern=".*\\..*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\.xps" />
+                <data android:pathPattern=".*\\..*\\.oxps" />
+                <data android:pathPattern=".*\\..*\\.cbz" />
+                <data android:pathPattern=".*\\..*\\.epub" />
+                <data android:pathPattern=".*\\..*\\.fb2" />
+                <data android:pathPattern=".*\\..*\\..*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\..*\\.xps" />
+                <data android:pathPattern=".*\\..*\\..*\\.oxps" />
+                <data android:pathPattern=".*\\..*\\..*\\.cbz" />
+                <data android:pathPattern=".*\\..*\\..*\\.epub" />
+                <data android:pathPattern=".*\\..*\\..*\\.fb2" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.xps" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.oxps" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.cbz" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.epub" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.fb2" />
+            </intent-filter>
+            <intent-filter>
+                <!-- match file scheme requests with path and any mime-type -->
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.pdf" />
+                <data android:pathPattern=".*\\.xps" />
+                <data android:pathPattern=".*\\.oxps" />
+                <data android:pathPattern=".*\\.cbz" />
+                <data android:pathPattern=".*\\.epub" />
+                <data android:pathPattern=".*\\.fb2" />
+                <data android:pathPattern=".*\\..*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\.xps" />
+                <data android:pathPattern=".*\\..*\\.oxps" />
+                <data android:pathPattern=".*\\..*\\.cbz" />
+                <data android:pathPattern=".*\\..*\\.epub" />
+                <data android:pathPattern=".*\\..*\\.fb2" />
+                <data android:pathPattern=".*\\..*\\..*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\..*\\.xps" />
+                <data android:pathPattern=".*\\..*\\..*\\.oxps" />
+                <data android:pathPattern=".*\\..*\\..*\\.cbz" />
+                <data android:pathPattern=".*\\..*\\..*\\.epub" />
+                <data android:pathPattern=".*\\..*\\..*\\.fb2" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.pdf" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.xps" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.oxps" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.cbz" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.epub" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.fb2" />
+                <data android:mimeType="*/*" />
             </intent-filter>
         </activity>
 
@@ -118,5 +218,19 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/ThemeTBS" />
 
+        <service
+            android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
+            android:label="dexopt"
+            android:process=":dexopt" />
+
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 </manifest>

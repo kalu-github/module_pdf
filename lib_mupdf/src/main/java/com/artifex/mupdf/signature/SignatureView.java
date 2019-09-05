@@ -13,10 +13,11 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.support.v7.widget.AppCompatTextView;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
-import android.view.View;
 
 import com.artifex.mupdf.R;
 
@@ -27,7 +28,7 @@ import java.util.List;
  * description: 手写轨迹
  * create by kalu on 2019/07/01
  */
-public class SignatureView extends View {
+public class SignatureView extends AppCompatTextView {
     // View state
     private List<SignaturePoint> mPoints;
     private boolean mIsEmpty;
@@ -43,7 +44,6 @@ public class SignatureView extends View {
     private float mVelocityFilterWeight;
     private OnSignedListener mOnSignedListener;
 
-    private Paint mPaint = new Paint();
     private Path mPath = new Path();
     private Bitmap mSignatureBitmap = null;
     private Canvas mSignatureBitmapCanvas = null;
@@ -55,19 +55,14 @@ public class SignatureView extends View {
 
         // Configurable parameters
         try {
-            mMinWidth = a.getDimensionPixelSize(R.styleable.SignatureView_sv_width_min, convertDpToPx(3));
-            mMaxWidth = a.getDimensionPixelSize(R.styleable.SignatureView_sv_width_max, convertDpToPx(7));
-            mVelocityFilterWeight = a.getFloat(R.styleable.SignatureView_sv_stroke, 0.9f);
-            mPaint.setColor(a.getColor(R.styleable.SignatureView_sv_color, Color.BLACK));
+            mMinWidth = a.getDimensionPixelSize(R.styleable.SignatureView_sv_width_min, convertDpToPx(4));
+            mMaxWidth = a.getDimensionPixelSize(R.styleable.SignatureView_sv_width_max, convertDpToPx(8));
+            mVelocityFilterWeight = a.getFloat(R.styleable.SignatureView_sv_stroke, 1.4f);
+            int color = a.getColor(R.styleable.SignatureView_sv_color, Color.BLACK);
+            setTextColor(color);
         } finally {
             a.recycle();
         }
-
-        // Fixed parameters
-        mPaint.setAntiAlias(true);
-        mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeCap(Paint.Cap.ROUND);
-        mPaint.setStrokeJoin(Paint.Join.ROUND);
 
         // Dirty rectangle to update only the changed portion of the view
         mDirtyRect = new RectF();
@@ -96,7 +91,7 @@ public class SignatureView extends View {
      * @param color the color.
      */
     public void setPenColor(int color) {
-        mPaint.setColor(color);
+        getPaint().setColor(color);
     }
 
     /**
@@ -184,9 +179,17 @@ public class SignatureView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (mSignatureBitmap != null) {
-            canvas.drawBitmap(mSignatureBitmap, 0, 0, mPaint);
-        }
+
+        if (null == mSignatureBitmap)
+            return;
+
+        TextPaint paint = getPaint();
+        paint.setAntiAlias(true);
+        paint.setFakeBoldText(true);
+        paint.setStrokeJoin(Paint.Join.ROUND);
+        paint.setStrokeCap(Paint.Cap.ROUND);
+        paint.setStyle(Paint.Style.STROKE);
+        canvas.drawBitmap(mSignatureBitmap, 0, 0, paint);
     }
 
     public void setOnSignedListener(OnSignedListener listener) {
@@ -361,7 +364,7 @@ public class SignatureView extends View {
 
     private void addBezier(SignatureBezier curve, float startWidth, float endWidth) {
         ensureSignatureBitmap();
-        float originalWidth = mPaint.getStrokeWidth();
+        float originalWidth = getPaint().getStrokeWidth();
         float widthDelta = endWidth - startWidth;
         float drawSteps = (float) Math.floor(curve.length());
 
@@ -385,13 +388,13 @@ public class SignatureView extends View {
             y += ttt * curve.endPoint.y;
 
             // Set the incremental stroke width and draw.
-            mPaint.setStrokeWidth(startWidth + ttt * widthDelta);
-            mSignatureBitmapCanvas.drawPoint(x, y, mPaint);
+            getPaint().setStrokeWidth(startWidth + ttt * widthDelta);
+            mSignatureBitmapCanvas.drawPoint(x, y, getPaint());
 
             expandDirtyRect(x, y);
         }
 
-        mPaint.setStrokeWidth(originalWidth);
+        getPaint().setStrokeWidth(originalWidth);
     }
 
     private SignatureModel calculateCurveControlPoints(SignaturePoint s1, SignaturePoint s2, SignaturePoint s3) {
@@ -487,7 +490,7 @@ public class SignatureView extends View {
             mSignatureBitmapCanvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.qq),
                     new Rect(0, 0, BitmapFactory.decodeResource(getResources(), R.drawable.qq).getWidth(),
                             BitmapFactory.decodeResource(getResources(), R.drawable.qq).getHeight()),
-                    new Rect(0, 0, width, height), mPaint);
+                    new Rect(0, 0, width, height), getPaint());
 //            mSignatureBitmapCanvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.bg_splash), matrix, mPaint);
 
         }
