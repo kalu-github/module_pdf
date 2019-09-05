@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.kalu.office"
     android:installLocation="auto">
 
@@ -25,7 +24,6 @@
             android:hardwareAccelerated="false"
             android:theme="@style/ThemeWhite">
             <intent-filter>
-                <!-- match content and file requests with known mime-type -->
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -43,7 +41,6 @@
                 <data android:mimeType="text/xml" />
             </intent-filter>
             <intent-filter>
-                <!-- match file requests with path and no mime-type -->
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -77,7 +74,6 @@
                 <data android:pathPattern=".*\\..*\\..*\\..*\\.fb2" />
             </intent-filter>
             <intent-filter>
-                <!-- match file scheme requests with path and any mime-type -->
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -119,7 +115,6 @@
             android:hardwareAccelerated="false"
             android:theme="@style/ThemeWhite">
             <intent-filter>
-                <!-- match content and file requests with known mime-type -->
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -137,7 +132,6 @@
                 <data android:mimeType="text/xml" />
             </intent-filter>
             <intent-filter>
-                <!-- match file requests with path and no mime-type -->
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -171,7 +165,6 @@
                 <data android:pathPattern=".*\\..*\\..*\\..*\\.fb2" />
             </intent-filter>
             <intent-filter>
-                <!-- match file scheme requests with path and any mime-type -->
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
