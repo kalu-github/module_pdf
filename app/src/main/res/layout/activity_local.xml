@@ -19,7 +19,7 @@
         android:padding="16dp"
         android:src="@drawable/ic_back" />
 
-    <com.artifex.mupdf.view.PDFPager
+    <lib.kalu.mupdf.android.view.PDFPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

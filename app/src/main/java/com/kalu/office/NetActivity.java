@@ -19,8 +19,8 @@ import android.widget.Toast;
 import com.artifex.mupdf.fitz.Document;
 import com.artifex.mupdf.fitz.Page;
 import com.artifex.mupdf.fitz.android.AndroidDrawDevice;
-import com.artifex.mupdf.util.MupdfUtil;
-import com.artifex.mupdf.view.PageView;
+import lib.kalu.mupdf.android.util.MupdfUtil;
+import lib.kalu.mupdf.android.view.PageView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public final class NetActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        final ViewPager view = findViewById(R.id.pager);
+        final ViewPager view = (ViewPager) findViewById(R.id.pager);
         if(null == view.getAdapter())
             return;
 
@@ -110,7 +110,7 @@ public final class NetActivity extends AppCompatActivity {
         }
 
         // step2
-        final ViewPager view = findViewById(R.id.pager);
+        final ViewPager view = (ViewPager) findViewById(R.id.pager);
         final OfficeAdapter adapter = new OfficeAdapter(list, document);
         view.setAdapter(adapter);
 

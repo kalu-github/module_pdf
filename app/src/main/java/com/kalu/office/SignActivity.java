@@ -1,17 +1,14 @@
 package com.kalu.office;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.artifex.mupdf.signature.SignatureView;
-
-import java.io.ByteArrayOutputStream;
+import lib.kalu.mupdf.android.signature.SignatureView;
 
 public class SignActivity extends Activity {
 
@@ -55,18 +52,22 @@ public class SignActivity extends Activity {
         iv_commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bitmap signatureBitmap = mSignaturePad.getSignatureBitmap();
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                signatureBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                byte[] bytes=baos.toByteArray();
+                String signatureBitmap = mSignaturePad.createSignatureBitmap();
 
-                Bundle b = new Bundle();
-                b.putByteArray("bitmap", bytes);
-                Intent mIntent = new Intent();
-                mIntent.putExtras(b);
-                // 设置结果，并进行传送
-                SignActivity.this.setResult(0, mIntent);
-                SignActivity.this.finish();
+                ImageView image = findViewById(R.id.bitmap);
+                image.setImageURI(Uri.parse(signatureBitmap));
+
+//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                signatureBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+//                byte[] bytes=baos.toByteArray();
+//
+//                Bundle b = new Bundle();
+//                b.putByteArray("bitmap", bytes);
+//                Intent mIntent = new Intent();
+//                mIntent.putExtras(b);
+//                // 设置结果，并进行传送
+//                SignActivity.this.setResult(0, mIntent);
+//                SignActivity.this.finish();
             }
         });
 

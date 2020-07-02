@@ -29,8 +29,8 @@ public class TbsActivity extends AppCompatActivity {
             }
         });
 
-        final TextView text = findViewById(R.id.info);
-        final TbsLayout frame = findViewById(R.id.tbs_data);
+        final TextView text = (TextView) findViewById(R.id.info);
+        final TbsLayout frame = (TbsLayout) findViewById(R.id.tbs_data);
 
         frame.init(getApplicationContext(), new TbsLayout.OnTbsChangeListener() {
             @Override

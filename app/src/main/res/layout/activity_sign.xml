@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
 
-    <com.artifex.mupdf.signature.SignatureView
+    <lib.kalu.mupdf.android.signature.SignatureView
         android:id="@+id/signature_pad"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -52,6 +52,12 @@
 
     <!--android:text="确定" />-->
     <!--</LinearLayout>-->
+
+    <ImageView
+        android:id="@+id/bitmap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"/>
 
 
 </RelativeLayout>

@@ -15,11 +15,11 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.artifex.mupdf.fitz.Document;
-import com.artifex.mupdf.fitz.Matrix;
 import com.artifex.mupdf.fitz.Page;
 import com.artifex.mupdf.fitz.android.AndroidDrawDevice;
-import com.artifex.mupdf.util.MupdfUtil;
-import com.artifex.mupdf.view.PageView;
+import lib.kalu.mupdf.android.util.MupdfUtil;
+import lib.kalu.mupdf.android.view.PDFPager;
+import lib.kalu.mupdf.android.view.PageView;
 
 import java.util.ArrayList;
 
@@ -28,8 +28,8 @@ public final class LocalActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        final ViewPager view = findViewById(R.id.pager);
-        ((OfficeAdapter) view.getAdapter()).clearPage();
+        PDFPager viewById = (PDFPager) findViewById(R.id.pager);
+        ((OfficeAdapter) viewById.getAdapter()).clearPage();
 
         super.onBackPressed();
     }
@@ -64,7 +64,7 @@ public final class LocalActivity extends AppCompatActivity {
         view.setAdapter(adapter);
 
 
-        final TextView number = findViewById(R.id.count);
+        final TextView number = (TextView) findViewById(R.id.count);
         number.setText(1 + " / " + count);
 //
         view.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
