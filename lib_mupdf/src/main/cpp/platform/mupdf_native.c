@@ -32,8 +32,8 @@
 
 #define MY_JNI_VERSION JNI_VERSION_1_6
 
-#define FUN(A) Java_com_artifex_mupdf_fitz_ ## A
-#define PKG "com/artifex/mupdf/fitz/"
+#define FUN(A) Java_lib_kalu_mupdf_core_ ## A
+#define PKG "lib/kalu/mupdf/core/"
 
 /* Do our best to avoid type casting warnings. */
 
@@ -245,110 +245,110 @@ static int check_enums()
 {
 	int valid = 1;
 
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_NORMAL == FZ_BLEND_NORMAL;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_MULTIPLY == FZ_BLEND_MULTIPLY;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_SCREEN == FZ_BLEND_SCREEN;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_OVERLAY == FZ_BLEND_OVERLAY;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_DARKEN == FZ_BLEND_DARKEN;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_LIGHTEN == FZ_BLEND_LIGHTEN;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_COLOR_DODGE == FZ_BLEND_COLOR_DODGE;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_COLOR_BURN == FZ_BLEND_COLOR_BURN;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_HARD_LIGHT == FZ_BLEND_HARD_LIGHT;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_SOFT_LIGHT == FZ_BLEND_SOFT_LIGHT;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_DIFFERENCE == FZ_BLEND_DIFFERENCE;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_EXCLUSION == FZ_BLEND_EXCLUSION;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_HUE == FZ_BLEND_HUE;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_SATURATION == FZ_BLEND_SATURATION;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_COLOR == FZ_BLEND_COLOR;
-	valid &= com_artifex_mupdf_fitz_Device_BLEND_LUMINOSITY == FZ_BLEND_LUMINOSITY;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_NORMAL == FZ_BLEND_NORMAL;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_MULTIPLY == FZ_BLEND_MULTIPLY;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_SCREEN == FZ_BLEND_SCREEN;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_OVERLAY == FZ_BLEND_OVERLAY;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_DARKEN == FZ_BLEND_DARKEN;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_LIGHTEN == FZ_BLEND_LIGHTEN;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_COLOR_DODGE == FZ_BLEND_COLOR_DODGE;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_COLOR_BURN == FZ_BLEND_COLOR_BURN;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_HARD_LIGHT == FZ_BLEND_HARD_LIGHT;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_SOFT_LIGHT == FZ_BLEND_SOFT_LIGHT;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_DIFFERENCE == FZ_BLEND_DIFFERENCE;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_EXCLUSION == FZ_BLEND_EXCLUSION;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_HUE == FZ_BLEND_HUE;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_SATURATION == FZ_BLEND_SATURATION;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_COLOR == FZ_BLEND_COLOR;
+	valid &= lib_kalu_mupdf_core_Device_BLEND_LUMINOSITY == FZ_BLEND_LUMINOSITY;
 
-	valid &= com_artifex_mupdf_fitz_Font_LATIN == PDF_SIMPLE_ENCODING_LATIN;
-	valid &= com_artifex_mupdf_fitz_Font_GREEK == PDF_SIMPLE_ENCODING_GREEK;
-	valid &= com_artifex_mupdf_fitz_Font_CYRILLIC == PDF_SIMPLE_ENCODING_CYRILLIC;
+	valid &= lib_kalu_mupdf_core_Font_LATIN == PDF_SIMPLE_ENCODING_LATIN;
+	valid &= lib_kalu_mupdf_core_Font_GREEK == PDF_SIMPLE_ENCODING_GREEK;
+	valid &= lib_kalu_mupdf_core_Font_CYRILLIC == PDF_SIMPLE_ENCODING_CYRILLIC;
 
-	valid &= com_artifex_mupdf_fitz_Font_ADOBE_CNS == FZ_ADOBE_CNS;
-	valid &= com_artifex_mupdf_fitz_Font_ADOBE_GB == FZ_ADOBE_GB;
-	valid &= com_artifex_mupdf_fitz_Font_ADOBE_JAPAN == FZ_ADOBE_JAPAN;
-	valid &= com_artifex_mupdf_fitz_Font_ADOBE_KOREA == FZ_ADOBE_KOREA;
+	valid &= lib_kalu_mupdf_core_Font_ADOBE_CNS == FZ_ADOBE_CNS;
+	valid &= lib_kalu_mupdf_core_Font_ADOBE_GB == FZ_ADOBE_GB;
+	valid &= lib_kalu_mupdf_core_Font_ADOBE_JAPAN == FZ_ADOBE_JAPAN;
+	valid &= lib_kalu_mupdf_core_Font_ADOBE_KOREA == FZ_ADOBE_KOREA;
 
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_LINE_ENDING_NONE == PDF_ANNOT_LE_NONE;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_LINE_ENDING_SQUARE == PDF_ANNOT_LE_SQUARE;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_LINE_ENDING_CIRCLE == PDF_ANNOT_LE_CIRCLE;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_LINE_ENDING_DIAMOND == PDF_ANNOT_LE_DIAMOND;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_LINE_ENDING_OPEN_ARROW == PDF_ANNOT_LE_OPEN_ARROW;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_LINE_ENDING_CLOSED_ARROW == PDF_ANNOT_LE_CLOSED_ARROW;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_LINE_ENDING_BUTT == PDF_ANNOT_LE_BUTT;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_LINE_ENDING_R_OPEN_ARROW == PDF_ANNOT_LE_R_OPEN_ARROW;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_LINE_ENDING_R_CLOSED_ARROW == PDF_ANNOT_LE_R_CLOSED_ARROW;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_LINE_ENDING_SLASH == PDF_ANNOT_LE_SLASH;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_LINE_ENDING_NONE == PDF_ANNOT_LE_NONE;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_LINE_ENDING_SQUARE == PDF_ANNOT_LE_SQUARE;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_LINE_ENDING_CIRCLE == PDF_ANNOT_LE_CIRCLE;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_LINE_ENDING_DIAMOND == PDF_ANNOT_LE_DIAMOND;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_LINE_ENDING_OPEN_ARROW == PDF_ANNOT_LE_OPEN_ARROW;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_LINE_ENDING_CLOSED_ARROW == PDF_ANNOT_LE_CLOSED_ARROW;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_LINE_ENDING_BUTT == PDF_ANNOT_LE_BUTT;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_LINE_ENDING_R_OPEN_ARROW == PDF_ANNOT_LE_R_OPEN_ARROW;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_LINE_ENDING_R_CLOSED_ARROW == PDF_ANNOT_LE_R_CLOSED_ARROW;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_LINE_ENDING_SLASH == PDF_ANNOT_LE_SLASH;
 
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_TEXT == PDF_ANNOT_TEXT;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_LINK == PDF_ANNOT_LINK;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_FREE_TEXT == PDF_ANNOT_FREE_TEXT;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_LINE == PDF_ANNOT_LINE;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_SQUARE == PDF_ANNOT_SQUARE;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_CIRCLE == PDF_ANNOT_CIRCLE;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_POLYGON == PDF_ANNOT_POLYGON;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_POLY_LINE == PDF_ANNOT_POLY_LINE;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_HIGHLIGHT == PDF_ANNOT_HIGHLIGHT;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_UNDERLINE == PDF_ANNOT_UNDERLINE;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_SQUIGGLY == PDF_ANNOT_SQUIGGLY;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_STRIKE_OUT == PDF_ANNOT_STRIKE_OUT;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_REDACT == PDF_ANNOT_REDACT;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_STAMP == PDF_ANNOT_STAMP;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_CARET == PDF_ANNOT_CARET;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_INK == PDF_ANNOT_INK;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_POPUP == PDF_ANNOT_POPUP;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_FILE_ATTACHMENT == PDF_ANNOT_FILE_ATTACHMENT;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_SOUND == PDF_ANNOT_SOUND;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_MOVIE == PDF_ANNOT_MOVIE;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_WIDGET == PDF_ANNOT_WIDGET;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_SCREEN == PDF_ANNOT_SCREEN;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_PRINTER_MARK == PDF_ANNOT_PRINTER_MARK;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_TRAP_NET == PDF_ANNOT_TRAP_NET;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_WATERMARK == PDF_ANNOT_WATERMARK;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_3D == PDF_ANNOT_3D;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_TYPE_UNKNOWN == PDF_ANNOT_UNKNOWN;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_TEXT == PDF_ANNOT_TEXT;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_LINK == PDF_ANNOT_LINK;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_FREE_TEXT == PDF_ANNOT_FREE_TEXT;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_LINE == PDF_ANNOT_LINE;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_SQUARE == PDF_ANNOT_SQUARE;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_CIRCLE == PDF_ANNOT_CIRCLE;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_POLYGON == PDF_ANNOT_POLYGON;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_POLY_LINE == PDF_ANNOT_POLY_LINE;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_HIGHLIGHT == PDF_ANNOT_HIGHLIGHT;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_UNDERLINE == PDF_ANNOT_UNDERLINE;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_SQUIGGLY == PDF_ANNOT_SQUIGGLY;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_STRIKE_OUT == PDF_ANNOT_STRIKE_OUT;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_REDACT == PDF_ANNOT_REDACT;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_STAMP == PDF_ANNOT_STAMP;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_CARET == PDF_ANNOT_CARET;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_INK == PDF_ANNOT_INK;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_POPUP == PDF_ANNOT_POPUP;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_FILE_ATTACHMENT == PDF_ANNOT_FILE_ATTACHMENT;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_SOUND == PDF_ANNOT_SOUND;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_MOVIE == PDF_ANNOT_MOVIE;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_WIDGET == PDF_ANNOT_WIDGET;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_SCREEN == PDF_ANNOT_SCREEN;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_PRINTER_MARK == PDF_ANNOT_PRINTER_MARK;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_TRAP_NET == PDF_ANNOT_TRAP_NET;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_WATERMARK == PDF_ANNOT_WATERMARK;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_3D == PDF_ANNOT_3D;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_TYPE_UNKNOWN == PDF_ANNOT_UNKNOWN;
 
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_IS_INVISIBLE == PDF_ANNOT_IS_INVISIBLE;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_IS_HIDDEN == PDF_ANNOT_IS_HIDDEN;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_IS_PRINT == PDF_ANNOT_IS_PRINT;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_IS_NO_ZOOM == PDF_ANNOT_IS_NO_ZOOM;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_IS_NO_ROTATE == PDF_ANNOT_IS_NO_ROTATE;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_IS_NO_VIEW == PDF_ANNOT_IS_NO_VIEW;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_IS_READ_ONLY == PDF_ANNOT_IS_READ_ONLY;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_IS_LOCKED == PDF_ANNOT_IS_LOCKED;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_IS_TOGGLE_NO_VIEW == PDF_ANNOT_IS_TOGGLE_NO_VIEW;
-	valid &= com_artifex_mupdf_fitz_PDFAnnotation_IS_LOCKED_CONTENTS == PDF_ANNOT_IS_LOCKED_CONTENTS;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_IS_INVISIBLE == PDF_ANNOT_IS_INVISIBLE;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_IS_HIDDEN == PDF_ANNOT_IS_HIDDEN;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_IS_PRINT == PDF_ANNOT_IS_PRINT;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_IS_NO_ZOOM == PDF_ANNOT_IS_NO_ZOOM;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_IS_NO_ROTATE == PDF_ANNOT_IS_NO_ROTATE;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_IS_NO_VIEW == PDF_ANNOT_IS_NO_VIEW;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_IS_READ_ONLY == PDF_ANNOT_IS_READ_ONLY;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_IS_LOCKED == PDF_ANNOT_IS_LOCKED;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_IS_TOGGLE_NO_VIEW == PDF_ANNOT_IS_TOGGLE_NO_VIEW;
+	valid &= lib_kalu_mupdf_core_PDFAnnotation_IS_LOCKED_CONTENTS == PDF_ANNOT_IS_LOCKED_CONTENTS;
 
-	valid &= com_artifex_mupdf_fitz_StrokeState_LINE_CAP_BUTT == FZ_LINECAP_BUTT;
-	valid &= com_artifex_mupdf_fitz_StrokeState_LINE_CAP_ROUND == FZ_LINECAP_ROUND;
-	valid &= com_artifex_mupdf_fitz_StrokeState_LINE_CAP_SQUARE == FZ_LINECAP_SQUARE;
-	valid &= com_artifex_mupdf_fitz_StrokeState_LINE_CAP_TRIANGLE == FZ_LINECAP_TRIANGLE;
+	valid &= lib_kalu_mupdf_core_StrokeState_LINE_CAP_BUTT == FZ_LINECAP_BUTT;
+	valid &= lib_kalu_mupdf_core_StrokeState_LINE_CAP_ROUND == FZ_LINECAP_ROUND;
+	valid &= lib_kalu_mupdf_core_StrokeState_LINE_CAP_SQUARE == FZ_LINECAP_SQUARE;
+	valid &= lib_kalu_mupdf_core_StrokeState_LINE_CAP_TRIANGLE == FZ_LINECAP_TRIANGLE;
 
-	valid &= com_artifex_mupdf_fitz_StrokeState_LINE_JOIN_MITER == FZ_LINEJOIN_MITER;
-	valid &= com_artifex_mupdf_fitz_StrokeState_LINE_JOIN_ROUND == FZ_LINEJOIN_ROUND;
-	valid &= com_artifex_mupdf_fitz_StrokeState_LINE_JOIN_BEVEL == FZ_LINEJOIN_BEVEL;
-	valid &= com_artifex_mupdf_fitz_StrokeState_LINE_JOIN_MITER_XPS == FZ_LINEJOIN_MITER_XPS;
+	valid &= lib_kalu_mupdf_core_StrokeState_LINE_JOIN_MITER == FZ_LINEJOIN_MITER;
+	valid &= lib_kalu_mupdf_core_StrokeState_LINE_JOIN_ROUND == FZ_LINEJOIN_ROUND;
+	valid &= lib_kalu_mupdf_core_StrokeState_LINE_JOIN_BEVEL == FZ_LINEJOIN_BEVEL;
+	valid &= lib_kalu_mupdf_core_StrokeState_LINE_JOIN_MITER_XPS == FZ_LINEJOIN_MITER_XPS;
 
-	valid &= com_artifex_mupdf_fitz_StructuredText_SELECT_CHARS == FZ_SELECT_CHARS;
-	valid &= com_artifex_mupdf_fitz_StructuredText_SELECT_WORDS == FZ_SELECT_WORDS;
-	valid &= com_artifex_mupdf_fitz_StructuredText_SELECT_LINES == FZ_SELECT_LINES;
+	valid &= lib_kalu_mupdf_core_StructuredText_SELECT_CHARS == FZ_SELECT_CHARS;
+	valid &= lib_kalu_mupdf_core_StructuredText_SELECT_WORDS == FZ_SELECT_WORDS;
+	valid &= lib_kalu_mupdf_core_StructuredText_SELECT_LINES == FZ_SELECT_LINES;
 
-	valid &= com_artifex_mupdf_fitz_PDFWidget_TYPE_UNKNOWN == PDF_WIDGET_TYPE_UNKNOWN;
-	valid &= com_artifex_mupdf_fitz_PDFWidget_TYPE_BUTTON == PDF_WIDGET_TYPE_BUTTON;
-	valid &= com_artifex_mupdf_fitz_PDFWidget_TYPE_CHECKBOX == PDF_WIDGET_TYPE_CHECKBOX;
-	valid &= com_artifex_mupdf_fitz_PDFWidget_TYPE_COMBOBOX == PDF_WIDGET_TYPE_COMBOBOX;
-	valid &= com_artifex_mupdf_fitz_PDFWidget_TYPE_LISTBOX == PDF_WIDGET_TYPE_LISTBOX;
-	valid &= com_artifex_mupdf_fitz_PDFWidget_TYPE_RADIOBUTTON == PDF_WIDGET_TYPE_RADIOBUTTON;
-	valid &= com_artifex_mupdf_fitz_PDFWidget_TYPE_SIGNATURE == PDF_WIDGET_TYPE_SIGNATURE;
-	valid &= com_artifex_mupdf_fitz_PDFWidget_TYPE_TEXT == PDF_WIDGET_TYPE_TEXT;
+	valid &= lib_kalu_mupdf_core_PDFWidget_TYPE_UNKNOWN == PDF_WIDGET_TYPE_UNKNOWN;
+	valid &= lib_kalu_mupdf_core_PDFWidget_TYPE_BUTTON == PDF_WIDGET_TYPE_BUTTON;
+	valid &= lib_kalu_mupdf_core_PDFWidget_TYPE_CHECKBOX == PDF_WIDGET_TYPE_CHECKBOX;
+	valid &= lib_kalu_mupdf_core_PDFWidget_TYPE_COMBOBOX == PDF_WIDGET_TYPE_COMBOBOX;
+	valid &= lib_kalu_mupdf_core_PDFWidget_TYPE_LISTBOX == PDF_WIDGET_TYPE_LISTBOX;
+	valid &= lib_kalu_mupdf_core_PDFWidget_TYPE_RADIOBUTTON == PDF_WIDGET_TYPE_RADIOBUTTON;
+	valid &= lib_kalu_mupdf_core_PDFWidget_TYPE_SIGNATURE == PDF_WIDGET_TYPE_SIGNATURE;
+	valid &= lib_kalu_mupdf_core_PDFWidget_TYPE_TEXT == PDF_WIDGET_TYPE_TEXT;
 
-	valid &= com_artifex_mupdf_fitz_PDFWidget_TX_FORMAT_NONE == PDF_WIDGET_TX_FORMAT_NONE;
-	valid &= com_artifex_mupdf_fitz_PDFWidget_TX_FORMAT_NUMBER == PDF_WIDGET_TX_FORMAT_NUMBER;
-	valid &= com_artifex_mupdf_fitz_PDFWidget_TX_FORMAT_SPECIAL == PDF_WIDGET_TX_FORMAT_SPECIAL;
-	valid &= com_artifex_mupdf_fitz_PDFWidget_TX_FORMAT_DATE == PDF_WIDGET_TX_FORMAT_DATE;
-	valid &= com_artifex_mupdf_fitz_PDFWidget_TX_FORMAT_TIME == PDF_WIDGET_TX_FORMAT_TIME;
+	valid &= lib_kalu_mupdf_core_PDFWidget_TX_FORMAT_NONE == PDF_WIDGET_TX_FORMAT_NONE;
+	valid &= lib_kalu_mupdf_core_PDFWidget_TX_FORMAT_NUMBER == PDF_WIDGET_TX_FORMAT_NUMBER;
+	valid &= lib_kalu_mupdf_core_PDFWidget_TX_FORMAT_SPECIAL == PDF_WIDGET_TX_FORMAT_SPECIAL;
+	valid &= lib_kalu_mupdf_core_PDFWidget_TX_FORMAT_DATE == PDF_WIDGET_TX_FORMAT_DATE;
+	valid &= lib_kalu_mupdf_core_PDFWidget_TX_FORMAT_TIME == PDF_WIDGET_TX_FORMAT_TIME;
 
 	return valid ? 1 : 0;
 }
@@ -3634,7 +3634,7 @@ static void androidDrawDevice_unlock(JNIEnv *env, NativeDeviceInfo *info)
 }
 
 JNIEXPORT jlong JNICALL
-FUN(android_AndroidDrawDevice_newNative)(JNIEnv *env, jclass self, jobject jbitmap, jint xOrigin, jint yOrigin, jint pX0, jint pY0, jint pX1, jint pY1)
+FUN(AndroidDrawDevice_newNative)(JNIEnv *env, jclass self, jobject jbitmap, jint xOrigin, jint yOrigin, jint pX0, jint pY0, jint pX1, jint pY1)
 {
 	fz_context *ctx = get_context(env);
 	AndroidBitmapInfo info;

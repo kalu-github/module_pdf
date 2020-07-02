@@ -14,9 +14,9 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.artifex.mupdf.fitz.Document;
-import com.artifex.mupdf.fitz.Page;
-import com.artifex.mupdf.fitz.android.AndroidDrawDevice;
+import lib.kalu.mupdf.core.Document;
+import lib.kalu.mupdf.core.Page;
+import lib.kalu.mupdf.core.AndroidDrawDevice;
 import lib.kalu.mupdf.android.util.MupdfUtil;
 import lib.kalu.mupdf.android.view.PDFPager;
 import lib.kalu.mupdf.android.view.PageView;

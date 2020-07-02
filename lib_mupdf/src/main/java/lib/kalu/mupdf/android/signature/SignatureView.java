@@ -18,14 +18,14 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
-import com.artifex.mupdf.R;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
+
+import lib.kalu.mupdf.R;
 
 /**
  * description: 手写轨迹

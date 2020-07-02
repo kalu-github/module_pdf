@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.artifex.mupdf.fitz.Document;
+import lib.kalu.mupdf.core.Document;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

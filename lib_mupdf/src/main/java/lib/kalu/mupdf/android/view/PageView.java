@@ -12,8 +12,8 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.Scroller;
 
-import com.artifex.mupdf.fitz.Link;
-import com.artifex.mupdf.fitz.Rect;
+import lib.kalu.mupdf.core.Link;
+import lib.kalu.mupdf.core.Rect;
 
 public class PageView extends View implements GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener {
 
