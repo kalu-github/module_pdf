@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#0084ff</color>
     <color name="colorAccent">#0084ff</color>
     <color name="colorWhite">#ffffff</color>
+
+    <color name="page_indicator">#C0202020</color>
+    <color name="toolbar">#C0202020</color>
+
 </resources>
