@@ -669,7 +669,7 @@ public class DocumentActivity extends Activity
 	}
 
 	private void makeButtonsView() {
-		mButtonsView = getLayoutInflater().inflate(R.layout.document_activity, null);
+		mButtonsView = getLayoutInflater().inflate(R.layout.activity_document, null);
 		mFilenameView = (TextView)mButtonsView.findViewById(R.id.docNameText);
 		mPageSlider = (SeekBar)mButtonsView.findViewById(R.id.pageSlider);
 		mPageNumberView = (TextView)mButtonsView.findViewById(R.id.pageNumber);
