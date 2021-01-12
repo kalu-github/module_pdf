@@ -3,60 +3,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
 
-    <TextView
+    <Button
         android:id="@+id/pdfium1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
-        android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="pdfium打开本地pdf文件"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp" />
+        android:textColor="#333333"
+        android:textSize="14sp" />
 
-    <TextView
+    <Button
         android:id="@+id/local"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
-        android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="mupdf打开本地pdf文件"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp" />
+        android:textColor="#333333"
+        android:textSize="14sp" />
 
-    <TextView
+    <Button
         android:id="@+id/net"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
-        android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="mupdf打开网络pdf文件"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp" />
+        android:textColor="#333333"
+        android:textSize="14sp" />
 
-    <TextView
+    <Button
         android:id="@+id/wps"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
-        android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="tbs打开网络pdf文件"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp" />
+        android:textColor="#333333"
+        android:textSize="14sp" />
 
-    <TextView
+    <Button
         android:id="@+id/sign"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="手写签名"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp" />
+        android:textColor="#333333"
+        android:textSize="14sp" />
 
 </LinearLayout>
