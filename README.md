@@ -1,4 +1,5 @@
-![image](https://github.com/153437803/MuPDF/blob/master/Screenrecorder-2018-09-22.gif )
+![image](https://github.com/153437803/MuPDF/blob/master/device1.gif )
+![image](https://github.com/153437803/MuPDF/blob/master/device2.gif )
 
 ```
 WPS文件预览, 基于TBS编译, 可以打开本地文件, 网络文件

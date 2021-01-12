@@ -30,4 +30,18 @@
         <item name="android:windowDisablePreview">true</item>
     </style>
 
+    <style name="ThemePdfium" parent="Theme.AppCompat.Light">
+        // 导航栏颜色[Toolbar]
+        <item name="colorPrimary">@color/colorPrimary</item>
+        // CheckBox的颜色
+        <item name="colorAccent">@color/colorAccent</item>
+        // 状态栏颜色
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        // 默认动画
+        <item name="android:windowIsTranslucent">false</item>
+        // 短暂黑屏
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
 </resources>

@@ -17,12 +17,17 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:25.1.0'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+
+    // mupdf
     implementation project(':lib_mupdf_v1161')
+
+    // x5
     implementation project(':lib_tbs_v43967')
 
-    // pdfium-android11
+    // pdfium
     implementation project(':lib_pdfium_a11')
 
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
