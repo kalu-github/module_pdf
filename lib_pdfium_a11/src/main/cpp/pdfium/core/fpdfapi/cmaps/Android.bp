@@ -1,0 +1,14 @@
+cc_library_static {
+    name: "libpdfium-cmaps",
+    defaults: ["pdfium-core"],
+
+    visibility: ["//external/pdfium:__subpackages__"],
+
+    static_libs: [
+        "libpdfium-fxcrt",
+    ],
+
+    srcs: [
+        "**/*.cpp",
+    ],
+}

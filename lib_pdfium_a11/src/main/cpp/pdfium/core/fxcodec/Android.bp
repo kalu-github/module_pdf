@@ -1,0 +1,35 @@
+cc_library_static {
+    name: "libpdfium-fxcodec",
+    defaults: ["pdfium-core"],
+
+    visibility: ["//external/pdfium:__subpackages__"],
+
+    static_libs: [
+        "libpdfium-lcms2",
+        "libpdfium-libopenjpeg2",
+        "libpdfium-fxcrt",
+        "libpdfium-fxge",
+    ],
+
+    shared_libs: [
+        "libz",
+        "libjpeg",
+    ],
+
+    exclude_srcs: [
+        // pdf_enable_xfa
+        "progressivedecoder.cpp",
+        // pdf_enable_xfa_bmp
+        "bmp/*",
+        // pdf_enable_xfa_gif
+        "gif/*",
+        // pdf_enable_xfa_png
+        "png/*",
+        // pdf_enable_xfa_tiff
+        "tiff/*",
+    ],
+
+    srcs: [
+        "**/*.cpp",
+    ],
+}

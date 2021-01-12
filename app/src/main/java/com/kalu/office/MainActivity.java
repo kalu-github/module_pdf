@@ -3,8 +3,9 @@ package com.kalu.office;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public final class MainActivity extends AppCompatActivity {
 
@@ -12,6 +13,15 @@ public final class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.pdfium1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), PdfiumActivity.class);
+                startActivity(intent);
+            }
+        });
 
         findViewById(R.id.local).setOnClickListener(new View.OnClickListener() {
             @Override

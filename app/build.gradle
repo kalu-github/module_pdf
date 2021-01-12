@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+
+    compileSdkVersion 29
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 27
-        versionName '1.15.0'
-        versionCode 30
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
 
         ndk {
-            abiFilters 'armeabi'
+            abiFilters 'armeabi-v7a'
         }
     }
 }
@@ -19,6 +19,11 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:25.1.0'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-    implementation project(':lib_mupdf')
-    implementation project(':lib_tbs')
+    implementation project(':lib_mupdf_v1161')
+    implementation project(':lib_tbs_v43967')
+
+    // pdfium-android11
+    implementation project(':lib_pdfium_a11')
+
+    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
 }

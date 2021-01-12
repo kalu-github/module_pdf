@@ -4,9 +4,10 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
 
 import lib.kalu.mupdf.android.signature.SignatureView;
 

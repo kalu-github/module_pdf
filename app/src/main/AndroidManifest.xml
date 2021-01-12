@@ -10,26 +10,24 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name">
-
+        <activity android:name=".PdfiumActivity"></activity>
         <activity
-            android:name="com.kalu.office.MainActivity"
+            android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/ThemeWhite">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.kalu.office.LocalActivity"
+            android:name=".LocalActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:hardwareAccelerated="false"
             android:theme="@style/ThemeWhite">
@@ -118,9 +116,8 @@
                 <data android:mimeType="*/*" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.kalu.office.NetActivity"
+            android:name=".NetActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:hardwareAccelerated="false"
             android:theme="@style/ThemeWhite">
@@ -209,15 +206,13 @@
                 <data android:mimeType="*/*" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.kalu.office.TbsActivity"
+            android:name=".TbsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:process=":wps"
             android:theme="@style/ThemeTBS" />
-
         <activity
-            android:name="com.kalu.office.SignActivity"
+            android:name=".SignActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/ThemeTBS" />
 
@@ -226,11 +221,11 @@
             android:label="dexopt"
             android:process=":dexopt" />
 
-
         <activity
-            android:name="com.kalu.office.DocumentActivity"
+            android:name=".DocumentActivity"
             android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
+
                 <!-- match content and file requests with known mime-type -->
                 <action android:name="android.intent.action.VIEW" />
 
@@ -249,6 +244,7 @@
                 <data android:mimeType="text/xml" />
             </intent-filter>
             <intent-filter>
+
                 <!-- match file requests with path and no mime-type -->
                 <action android:name="android.intent.action.VIEW" />
 
@@ -283,6 +279,7 @@
                 <data android:pathPattern=".*\\..*\\..*\\..*\\.fb2" />
             </intent-filter>
             <intent-filter>
+
                 <!-- match file scheme requests with path and any mime-type -->
                 <action android:name="android.intent.action.VIEW" />
 
@@ -318,6 +315,6 @@
                 <data android:mimeType="*/*" />
             </intent-filter>
         </activity>
-
     </application>
+
 </manifest>

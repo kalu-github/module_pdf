@@ -1,0 +1,30 @@
+cc_library_static {
+    name: "libpdfium-fxcrt",
+    defaults: ["pdfium-core"],
+
+    visibility: ["//external/pdfium:__subpackages__"],
+
+    export_shared_lib_headers: [
+        "libandroidicu",
+    ],
+
+    static_libs: [
+        "libpdfium-third_party-base",
+    ],
+
+    shared_libs: [
+        "libandroidicu",
+    ],
+
+    exclude_srcs: [
+        // is_win
+        "cfx_fileaccess_windows.cpp",
+        // pdf_enable_xfa
+        "cfx_memorystream.cpp",
+    ],
+
+    srcs: [
+        "*.cpp",
+        "xml/*.cpp",
+    ],
+}

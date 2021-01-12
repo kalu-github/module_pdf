@@ -1,0 +1,35 @@
+cc_library_static {
+    name: "libpdfium-fpdfsdk",
+    defaults: ["pdfium-core"],
+
+    visibility: ["//external/pdfium:__subpackages__"],
+
+    header_libs: [
+        "libpdfium-constants",
+    ],
+
+    static_libs: [
+        "libpdfium-fdrm",
+        "libpdfium-edit",
+        "libpdfium-font",
+        "libpdfium-page",
+        "libpdfium-parser",
+        "libpdfium-render",
+        "libpdfium-fpdfdoc",
+        "libpdfium-fpdftext",
+        "libpdfium-fxcrt",
+        "libpdfium-fxge",
+        "libpdfium-fxjs",
+        "libpdfium-formfiller",
+        "libpdfium-pwl",
+    ],
+
+    srcs: [
+        "*.cpp",
+    ],
+
+    include_dirs: [
+        "external/freetype/include",
+        "external/freetype/include/freetype",
+    ],
+}

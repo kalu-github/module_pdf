@@ -1,0 +1,6 @@
+cc_library_headers {
+    name: "libpdfium-constants",
+    export_include_dirs: ["."],
+    visibility: ["//external/pdfium:__subpackages__"],
+}
+

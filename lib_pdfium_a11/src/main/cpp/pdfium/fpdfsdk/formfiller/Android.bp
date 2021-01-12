@@ -1,0 +1,22 @@
+cc_library_static {
+    name: "libpdfium-formfiller",
+    defaults: ["pdfium-core"],
+
+    visibility: ["//external/pdfium:__subpackages__"],
+
+    header_libs: [
+        "libpdfium-constants",
+    ],
+
+    static_libs: [
+        "libpdfium-page",
+        "libpdfium-fpdfdoc",
+        "libpdfium-fxcrt",
+        "libpdfium-fxge",
+        "libpdfium-pwl",
+    ],
+
+    srcs: [
+        "*.cpp",
+    ],
+}

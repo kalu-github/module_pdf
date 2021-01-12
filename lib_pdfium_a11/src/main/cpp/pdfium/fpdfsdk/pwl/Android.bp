@@ -1,0 +1,27 @@
+cc_library_static {
+    name: "libpdfium-pwl",
+    defaults: ["pdfium-core"],
+
+    visibility: ["//external/pdfium:__subpackages__"],
+
+    header_libs: [
+        "libpdfium-constants",
+    ],
+
+    static_libs: [
+        "libpdfium-font",
+        "libpdfium-render",
+        "libpdfium-fpdfdoc",
+        "libpdfium-fxcrt",
+        "libpdfium-fxge",
+    ],
+
+    srcs: [
+        "*.cpp",
+    ],
+
+    include_dirs: [
+        "external/freetype/include",
+        "external/freetype/include/freetype",
+    ],
+}

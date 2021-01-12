@@ -4,15 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import androidx.activity.ComponentActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import lib.kalu.mupdf.core.Document;
 import lib.kalu.mupdf.core.Page;
@@ -23,7 +25,7 @@ import lib.kalu.mupdf.android.view.PageView;
 
 import java.util.ArrayList;
 
-public final class LocalActivity extends AppCompatActivity {
+public final class LocalActivity extends ComponentActivity {
 
     @Override
     public void onBackPressed() {

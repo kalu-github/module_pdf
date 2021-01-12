@@ -1,11 +1,10 @@
 package com.kalu.office;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.tencent.smtt.sdk.QbSdk;
+import androidx.appcompat.app.AppCompatActivity;
 
 import lib.kalu.tbs.TbsLayout;
 

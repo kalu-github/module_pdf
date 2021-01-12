@@ -1,0 +1,17 @@
+cc_library_static {
+    name: "libpdfium-fpdftext",
+    defaults: ["pdfium-core"],
+
+    visibility: ["//external/pdfium:__subpackages__"],
+
+    static_libs: [
+        "libpdfium-font",
+        "libpdfium-page",
+        "libpdfium-parser",
+        "libpdfium-fxcrt",
+    ],
+
+    srcs: [
+        "*.cpp",
+    ],
+}

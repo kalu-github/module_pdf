@@ -1,0 +1,114 @@
+cc_defaults {
+    name: "pdfium-common",
+    cflags: [
+        "-O3",
+        "-fstrict-aliasing",
+        "-fprefetch-loop-arrays",
+        "-fexceptions",
+
+        "-Wno-implicit-fallthrough",
+        "-Wno-missing-field-initializers",
+        "-Wno-non-virtual-dtor",
+        "-Wno-unused-parameter",
+
+        // The new pass manager causes non-deterministic build result.
+        // http://b/135660678
+        "-fno-experimental-new-pass-manager",
+
+        // pdfium_common_config
+        "-DOPJ_STATIC",
+        "-DPNG_PREFIX",
+        "-DPNG_USE_READ_MACROS",
+    ],
+
+    arch: {
+        arm: {
+            instruction_set: "arm",
+        },
+    },
+
+    include_dirs: [
+        "external/freetype/include",
+    ],
+
+    header_libs: [
+        "pdfium-headers",
+        "pdfium-third-party-headers"
+    ],
+}
+
+cc_defaults {
+    name: "pdfium-core",
+
+    defaults: [
+        "pdfium-common"
+    ],
+
+    exclude_srcs: [
+        "**/*_unittest.cpp",
+        "**/*_embeddertest.cpp",
+    ],
+}
+
+
+cc_library_headers {
+    name: "pdfium-headers",
+    export_include_dirs: ["."],
+}
+
+cc_library_headers {
+    name: "pdfium-third-party-headers",
+    export_include_dirs: ["third_party"],
+}
+
+cc_library_shared {
+    name: "libpdfium",
+    defaults: ["pdfium-core"],
+
+    header_libs: [
+        "libpdfium-constants",
+    ],
+
+    whole_static_libs: [
+        "libpdfium-fpdfsdk",
+    ],
+
+    // Transitivity is not supported for static libraries (yet).
+    // Lists the whole transitivity closure here.
+    static_libs: [
+        "libpdfium-agg",
+        "libpdfium-cmaps",
+        "libpdfium-edit",
+        "libpdfium-fdrm",
+        "libpdfium-font",
+        "libpdfium-formfiller",
+        "libpdfium-fpdfdoc",
+        "libpdfium-fpdftext",
+        "libpdfium-fxcodec",
+        "libpdfium-fxcrt",
+        "libpdfium-fxge",
+        "libpdfium-fxjs",
+        "libpdfium-libopenjpeg2",
+        "libpdfium-page",
+        "libpdfium-parser",
+        "libpdfium-pwl",
+        "libpdfium-render",
+        "libpdfium-skia_shared",
+        "libpdfium-third_party-base",
+        "libpdfium-lcms2",
+    ],
+
+    // TODO: figure out why turning on exceptions requires manually linking libdl
+    shared_libs: [
+        "libandroidicu",
+        "libdl",
+        "libft2",
+        "libjpeg",
+        "libz",
+    ],
+
+    export_include_dirs: ["public"],
+
+}
+
+subdirs = ["third_party"]

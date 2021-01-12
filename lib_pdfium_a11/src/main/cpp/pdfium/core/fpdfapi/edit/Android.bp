@@ -1,0 +1,22 @@
+cc_library_static {
+    name: "libpdfium-edit",
+    defaults: ["pdfium-core"],
+
+    visibility: ["//external/pdfium:__subpackages__"],
+
+    header_libs: [
+        "libpdfium-constants",
+    ],
+
+    static_libs: [
+        "libpdfium-fxcrt",
+        "libpdfium-font",
+        "libpdfium-page",
+        "libpdfium-parser",
+        "libpdfium-skia_shared",
+    ],
+
+    srcs: [
+        "*.cpp",
+    ],
+}

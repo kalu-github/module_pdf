@@ -1,0 +1,25 @@
+cc_library_static {
+    name: "libpdfium-parser",
+    defaults: ["pdfium-core"],
+
+    visibility: ["//external/pdfium:__subpackages__"],
+
+    header_libs: [
+        "libpdfium-constants",
+    ],
+
+    static_libs: [
+        "libpdfium-fdrm",
+        "libpdfium-fxcodec",
+        "libpdfium-fxcrt",
+    ],
+
+    exclude_srcs: [
+        // pdf_enable_xfa
+        "cpdf_seekablemultistream.cpp",
+    ],
+
+    srcs: [
+        "*.cpp",
+    ],
+}
