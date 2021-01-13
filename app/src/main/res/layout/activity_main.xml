@@ -11,49 +11,59 @@
         android:id="@+id/pdfium1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:text="pdfium打开本地pdf文件"
+        android:layout_marginBottom="10dp"
+        android:text="本地文件：pdfium"
         android:textColor="#333333"
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/local"
+        android:id="@+id/pdfium2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="mupdf打开本地pdf文件"
+        android:text="网络文件：pdfium"
         android:textColor="#333333"
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/net"
+        android:id="@+id/mupdf1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="mupdf打开网络pdf文件"
+        android:text="本地文件：mupdf"
         android:textColor="#333333"
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/wps"
+        android:id="@+id/mupdf2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="tbs打开网络pdf文件"
+        android:text="网络文件：mupdf"
         android:textColor="#333333"
         android:textSize="14sp" />
 
-<!--    <Button-->
-<!--        android:id="@+id/sign"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:gravity="center"-->
-<!--        android:text="手写签名"-->
-<!--        android:textColor="#333333"-->
-<!--        android:textSize="14sp" />-->
+    <Button
+        android:id="@+id/x5"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="网络文件：x5"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+    <!--    <Button-->
+    <!--        android:id="@+id/sign"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="手写签名"-->
+    <!--        android:textColor="#333333"-->
+    <!--        android:textSize="14sp" />-->
 
 </LinearLayout>

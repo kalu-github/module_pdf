@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.io.File;
 import java.util.List;
 
 import lib.kalu.pdfium.PdfDocument;
@@ -49,6 +50,8 @@ public class PdfiumActivity extends AppCompatActivity implements OnPageChangeLis
         setContentView(R.layout.activity_pdfium);
         this.pDocView = findViewById(R.id.pdfView);
         pDocView.setBackgroundColor(Color.LTGRAY);
+
+        uri = getIntent().getData();
         if (uri != null) {
             displayFromUri(uri);
         } else {
@@ -123,21 +126,35 @@ public class PdfiumActivity extends AppCompatActivity implements OnPageChangeLis
     private void displayFromUri(Uri uri) {
         pdfFileName = getFileName(uri);
 
-        pDocView.fromUri(uri)
-                .defaultPage(pageNumber)
-                .onPageChange(this)
-                .enableAnnotationRendering(true)
-                .onLoad(this)
-                .scrollHandle(new DefaultScrollHandle(this))
-                .spacing(10) // in dp
-                .onPageError(this)
-                .linkHandler(new DefaultLinkHandler(pDocView))
-                .load();
+        if (null != uri.getScheme()) {
+            pDocView.fromUri(uri)
+                    .defaultPage(pageNumber)
+                    .onPageChange(this)
+                    .enableAnnotationRendering(true)
+                    .onLoad(this)
+                    .scrollHandle(new DefaultScrollHandle(this))
+                    .spacing(10) // in dp
+                    .onPageError(this)
+                    .linkHandler(new DefaultLinkHandler(pDocView))
+                    .load();
+        } else if (uri.getPath().startsWith("/data/") && uri.getPath().toLowerCase().endsWith(".pdf")) {
+            pDocView.fromFile(new File(uri.getPath()))
+                    .defaultPage(pageNumber)
+                    .onPageChange(this)
+                    .enableAnnotationRendering(true)
+                    .onLoad(this)
+                    .scrollHandle(new DefaultScrollHandle(this))
+                    .spacing(10) // in dp
+                    .onPageError(this)
+                    .linkHandler(new DefaultLinkHandler(pDocView))
+                    .load();
+        }
     }
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             uri = data.getData();
             displayFromUri(uri);
@@ -151,8 +168,9 @@ public class PdfiumActivity extends AppCompatActivity implements OnPageChangeLis
     }
 
     public String getFileName(Uri uri) {
+
         String result = null;
-        if (uri.getScheme().equals("content")) {
+        if (null != uri.getScheme() && uri.getScheme().equals("content")) {
             Cursor cursor = getContentResolver().query(uri, null, null, null, null);
             try {
                 if (cursor != null && cursor.moveToFirst()) {
@@ -163,6 +181,8 @@ public class PdfiumActivity extends AppCompatActivity implements OnPageChangeLis
                     cursor.close();
                 }
             }
+        } else if (null == uri.getScheme() && uri.getPath().startsWith("/data/") && uri.getPath().toLowerCase().endsWith(".pdf")) {
+            result = uri.getPath();
         }
         if (result == null) {
             result = uri.getLastPathSegment();

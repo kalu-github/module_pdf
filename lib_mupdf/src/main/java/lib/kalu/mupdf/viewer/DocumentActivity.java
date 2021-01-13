@@ -18,6 +18,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -156,8 +157,16 @@ public class DocumentActivity extends Activity {
 
             if (Intent.ACTION_VIEW.equals(intent.getAction())) {
                 Uri uri = intent.getData();
-                System.out.println("URI to open is: " + uri);
-                if (uri.getScheme().equals("file")) {
+                Log.e("pdfium", "URI to open is: " + uri.toString());
+                Log.e("pdfium", "Scheme to open is: " + uri.getScheme());
+                Log.e("pdfium", "Path to open is: " + uri.getPath());
+
+                if (null != uri.getScheme() && uri.getScheme().equals("file")) {
+                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST);
+                    String path = uri.getPath();
+                    core = openFile(path);
+                } else if (null == uri.getScheme() && uri.getPath().startsWith("/data/") && uri.getPath().toLowerCase().endsWith(".pdf")) {
                     if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
                         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST);
                     String path = uri.getPath();
