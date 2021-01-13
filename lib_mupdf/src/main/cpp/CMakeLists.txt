@@ -1,22 +1,23 @@
 cmake_minimum_required(VERSION 3.10.2)
 
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -fexceptions -frtti")
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DHAVE_PTHREADS")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -fexceptions -frtti")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DHAVE_PTHREADS")
 set(CMAKE_BUILD_TYPE "Release") #设置编译Release 还是Debug版本(Release Debug)
+#set(CMAKE_DISABLE_FIND_PACKAGE_HarfBuzz TRUE)
 
 ###############################################################################################
 
-#if (${ANDROID_ABI} STREQUAL "x86_64")
-#    include_directories(${ANDROID_SYSROOT}/usr/include/x86_64-linux-android)
-#elseif (${ANDROID_ABI} STREQUAL "x86")
-#    include_directories(${ANDROID_SYSROOT}/usr/include/i686-linux-android)
-#elseif (${ANDROID_ABI} STREQUAL "armeabi-v7a")
-#    include_directories(${ANDROID_SYSROOT}/usr/include/arm-linux-androideabi)
-#elseif (${ANDROID_ABI} STREQUAL "arm64-v8a")
-#    include_directories(${ANDROID_SYSROOT}/usr/include/aarch64-linux-android)
-#else ()
-#    include_directories(${ANDROID_SYSROOT}/usr/include/arm-linux-androideabi)
-#endif ()
+if (${ANDROID_ABI} STREQUAL "x86_64")
+    include_directories(${ANDROID_SYSROOT}/usr/include/x86_64-linux-android)
+elseif (${ANDROID_ABI} STREQUAL "x86")
+    include_directories(${ANDROID_SYSROOT}/usr/include/i686-linux-android)
+elseif (${ANDROID_ABI} STREQUAL "armeabi-v7a")
+    include_directories(${ANDROID_SYSROOT}/usr/include/arm-linux-androideabi)
+elseif (${ANDROID_ABI} STREQUAL "arm64-v8a")
+    include_directories(${ANDROID_SYSROOT}/usr/include/aarch64-linux-android)
+else ()
+    include_directories(${ANDROID_SYSROOT}/usr/include/arm-linux-androideabi)
+endif ()
 
 ###############################################################################################
 
@@ -28,13 +29,14 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAV
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DHAVE_LCMS2MT")
 
 include_directories(include)
+include_directories(include/mupdf)
 include_directories(scripts/freetype)
 include_directories(scripts/libjpeg)
 include_directories(thirdparty/freetype/include)
-#include_directories(thirdparty/freetype/include/freetype)
-#include_directories(thirdparty/freetype/include/freetype/config)
-#include_directories(thirdparty/freetype/include/freetype/internal)
-#include_directories(thirdparty/freetype/include/freetype/internal/services)
+include_directories(thirdparty/freetype/include/freetype)
+include_directories(thirdparty/freetype/include/freetype/config)
+include_directories(thirdparty/freetype/include/freetype/internal)
+include_directories(thirdparty/freetype/include/freetype/internal/services)
 include_directories(thirdparty/gumbo-parser/src)
 include_directories(thirdparty/harfbuzz/src)
 include_directories(thirdparty/jbig2dec)
@@ -96,10 +98,10 @@ include_directories(include/mupdf)
 include_directories(scripts/freetype)
 include_directories(scripts/libjpeg)
 include_directories(thirdparty/freetype/include)
-#include_directories(thirdparty/freetype/include/freetype)
-#include_directories(thirdparty/freetype/include/freetype/config)
-#include_directories(thirdparty/freetype/include/freetype/internal)
-#include_directories(thirdparty/freetype/include/freetype/internal/services)
+include_directories(thirdparty/freetype/include/freetype)
+include_directories(thirdparty/freetype/include/freetype/config)
+include_directories(thirdparty/freetype/include/freetype/internal)
+include_directories(thirdparty/freetype/include/freetype/internal/services)
 include_directories(thirdparty/gumbo-parser/src)
 include_directories(thirdparty/harfbuzz/src)
 include_directories(thirdparty/jbig2dec)
@@ -108,6 +110,7 @@ include_directories(thirdparty/lcms2/include)
 include_directories(thirdparty/mujs)
 include_directories(thirdparty/openjpeg/src/lib/openjp2)
 include_directories(thirdparty/zlib)
+
 
 add_library(
 
@@ -318,10 +321,25 @@ add_library(
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DHAVE_ANDROID")
 
 include_directories(include)
+include_directories(include/mupdf)
+include_directories(scripts/freetype)
+include_directories(scripts/libjpeg)
 include_directories(thirdparty/freetype/include)
 include_directories(thirdparty/freetype/include/freetype)
+include_directories(thirdparty/freetype/include/freetype/config)
+include_directories(thirdparty/freetype/include/freetype/internal)
+include_directories(thirdparty/freetype/include/freetype/internal/services)
+include_directories(thirdparty/gumbo-parser/src)
 include_directories(thirdparty/harfbuzz/src)
-include_directories(platform/java)
+include_directories(thirdparty/jbig2dec)
+include_directories(thirdparty/libjpeg)
+include_directories(thirdparty/lcms2/include)
+include_directories(thirdparty/mujs)
+include_directories(thirdparty/openjpeg/src/lib/openjp2)
+include_directories(thirdparty/zlib)
+
+#file(GLOB SRC_JNI platform/java/jni/*.c)
+#file(GLOB SRC_ANDROID platform/java/jni/android/*.c)
 
 add_library(
 
@@ -331,6 +349,9 @@ add_library(
         # Sets the library as a shared library.
         SHARED
 
+#        ${SRC_FITZ}
+#        ${SRC_ANDROID}
+
         # Provides a relative path to your source file(s).
         platform/java/mupdf_native.c)
 
@@ -339,8 +360,11 @@ target_link_libraries(
         # Specifies the target library.
         mupdf_java
 
-        mupdf_core
-        mupdf_thirdparty
-
         # Links the target library to the log library
-        jnigraphics log m)
+        jnigraphics
+        log
+        m
+
+        # static .a
+        mupdf_core
+        mupdf_thirdparty)

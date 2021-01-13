@@ -2,9 +2,9 @@
 ![image](https://github.com/153437803/MuPDF/blob/master/device2.gif )
 
 ```
+doc ppt xls x5预览：lib_x5
 pdf mupdf开源库预览：lib_mupdf
 pdf pdfium开源库预览：lib_pdfium
-doc ppt xls x5预览：lib_x5
 ```
 
 ```

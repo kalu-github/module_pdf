@@ -16,23 +16,17 @@ android {
 
         externalNativeBuild {
             cmake {
-//                // Passes optional arguments to CMake.
-//                arguments '-DANDROID_PLATFORM=android-16', '-DANDROID_TOOLCHAIN=clang'
-//
-//                // Sets optional flags for the C compiler.
-//                cFlags "-D_EXAMPLE_C_FLAG1", "-D_EXAMPLE_C_FLAG2"
-//
-//                // Sets a flag to enable format macro constants for the C++ compiler.
-//                cppFlags "-D__STDC_FORMAT_MACROS -DFT2_BUILD_LIBRARY"
+                cppFlags "-std=c++0x"
+                abiFilters "armeabi-v7a"
             }
         }
     }
 
-//    externalNativeBuild {
-//        cmake {
-//            path "src/main/cpp/CMakeLists.txt"
-//        }
-//    }
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+        }
+    }
 
     sourceSets.main {
         jni.srcDirs = []
@@ -48,6 +42,6 @@ repositories {
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation 'com.android.support:appcompat-v7:25.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 }
