@@ -26,7 +26,7 @@ import android.widget.ProgressBar;
 import android.os.AsyncTask;
 
 // Make our ImageViews opaque to optimize redraw
-class OpaqueImageView extends ImageView {
+class OpaqueImageView extends androidx.appcompat.widget.AppCompatImageView {
 
 	public OpaqueImageView(Context context) {
 		super(context);
