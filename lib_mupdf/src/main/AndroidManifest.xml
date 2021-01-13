@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.artifex.mupdf">
+    package="lib.kalu.mupdf">
 
     <application>
         <activity
-            android:name="com.artifex.mupdf.viewer.DocumentActivity"
+            android:name="lib.kalu.mupdf.viewer.DocumentActivity"
             android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <!-- match content and file requests with known mime-type -->
@@ -95,7 +95,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.artifex.mupdf.viewer.OutlineActivity"
+            android:name="lib.kalu.mupdf.viewer.OutlineActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"/>
     </application>
 </manifest>

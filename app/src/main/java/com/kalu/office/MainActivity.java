@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.artifex.mupdf.viewer.DocumentActivity;
+import lib.kalu.mupdf.viewer.DocumentActivity;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

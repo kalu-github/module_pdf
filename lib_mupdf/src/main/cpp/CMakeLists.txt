@@ -342,7 +342,7 @@ include_directories(thirdparty/zlib)
 add_library(
 
         # Sets the name of the library.
-        mupdf_java
+        mupdf-v1180
 
         # Sets the library as a shared library.
         SHARED
@@ -356,7 +356,7 @@ add_library(
 target_link_libraries(
 
         # Specifies the target library.
-        mupdf_java
+        mupdf-v1180
 
         # Links the target library to the log library
         jnigraphics
