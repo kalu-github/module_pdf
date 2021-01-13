@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.10.2)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -fexceptions -frtti")
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DHAVE_PTHREADS")
 set(CMAKE_BUILD_TYPE "Release") #设置编译Release 还是Debug版本(Release Debug)
-#set(CMAKE_DISABLE_FIND_PACKAGE_HarfBuzz TRUE)
 
 ###############################################################################################
 
@@ -21,12 +20,12 @@ endif ()
 
 ###############################################################################################
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ffunction-sections -fdata-sections")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_FILE_OFFSET_BITS=32")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DTOFU_NOTO -DTOFU_CJK")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DAA_BITS=8")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DHAVE_LCMS2MT")
+add_definitions(-ffunction-sections -fdata-sections)
+add_definitions(-D_FILE_OFFSET_BITS=32)
+add_definitions(-DTOFU_NOTO -DTOFU_CJK)
+add_definitions(-DAA_BITS=8)
+add_definitions(-DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H)
+add_definitions(-DHAVE_LCMS2MT)
 
 include_directories(include)
 include_directories(include/mupdf)
@@ -77,21 +76,20 @@ add_library(
 
 ###############################################################################################
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ffunction-sections -fdata-sections")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DFT2_BUILD_LIBRARY -DDARWIN_NO_CARBON")
-#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DFT_CONFIG_MODULES_H=\"slimftmodules.h\"")
-#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DFT_CONFIG_OPTIONS_H=\"slimftoptions.h\"")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DHAVE_STDINT_H")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DHAVE_FREETYPE")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H")
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ffunction-sections -fdata-sections")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti -fno-exceptions -fvisibility-inlines-hidden")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DHAVE_FALLBACK=1 -DHAVE_OT -DHAVE_UCDN -DHB_NO_MT")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Dhb_malloc_impl=fz_hb_malloc")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Dhb_calloc_impl=fz_hb_calloc")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Dhb_realloc_impl=fz_hb_realloc")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Dhb_free_impl=fz_hb_free")
+add_definitions(-ffunction-sections -fdata-sections)
+add_definitions(-DFT2_BUILD_LIBRARY -DDARWIN_NO_CARBON)
+add_definitions("-DFT_CONFIG_MODULES_H=<slimftmodules.h>")
+add_definitions("-DFT_CONFIG_OPTIONS_H=<slimftoptions.h>")
+add_definitions(-DHAVE_STDINT_H)
+add_definitions(-DHAVE_FREETYPE)
+add_definitions(-DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H)
+add_definitions(-ffunction-sections -fdata-sections)
+add_definitions(-fno-rtti -fno-exceptions -fvisibility-inlines-hidden)
+add_definitions(-DHAVE_FALLBACK=1 -DHAVE_OT -DHAVE_UCDN -DHB_NO_MT)
+add_definitions(-Dhb_malloc_impl=fz_hb_malloc)
+add_definitions(-Dhb_calloc_impl=fz_hb_calloc)
+add_definitions(-Dhb_realloc_impl=fz_hb_realloc)
+add_definitions(-Dhb_free_impl=fz_hb_free)
 
 include_directories(include)
 include_directories(include/mupdf)
@@ -318,7 +316,7 @@ add_library(
 
 ################################################################################################
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DHAVE_ANDROID")
+add_definitions(-DHAVE_ANDROID)
 
 include_directories(include)
 include_directories(include/mupdf)
