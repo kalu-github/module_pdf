@@ -34,14 +34,14 @@ pdf_cmp_key(fz_context *ctx, void *k0, void *k1)
 }
 
 static void
-pdf_format_key(fz_context *ctx, char *s, int n, void *key_)
+pdf_format_key(fz_context *ctx, char *s, size_t n, void *key_)
 {
 	pdf_obj *key = (pdf_obj *)key_;
 	if (pdf_is_indirect(ctx, key))
 		fz_snprintf(s, n, "(%d 0 R)", pdf_to_num(ctx, key));
 	else
 	{
-		int t;
+		size_t t;
 		char *p = pdf_sprint_obj(ctx, s, n, &t, key, 1, 0);
 		if (p != s) {
 			fz_strlcpy(s, p, n);
@@ -52,6 +52,7 @@ pdf_format_key(fz_context *ctx, char *s, int n, void *key_)
 
 static const fz_store_type pdf_obj_store_type =
 {
+	"pdf_obj",
 	pdf_make_hash_key,
 	pdf_keep_key,
 	pdf_drop_key,

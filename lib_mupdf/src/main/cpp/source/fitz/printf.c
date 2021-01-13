@@ -189,11 +189,57 @@ static void fmtint64(struct fmtbuf *out, int64_t value, int s, int z, int w, int
 	fmtuint64(out, a, s, z, w, base);
 }
 
-static void fmtquote(struct fmtbuf *out, const char *s, int sq, int eq)
+static void fmtquote(struct fmtbuf *out, const char *s, int sq, int eq, int verbatim)
+{
+	int i, n, c;
+	fmtputc(out, sq);
+	while (*s != 0) {
+		n = fz_chartorune(&c, s);
+		switch (c) {
+		default:
+			if (c < 32) {
+				fmtputc(out, '\\');
+				fmtputc(out, 'x');
+				fmtputc(out, "0123456789ABCDEF"[(c>>4)&15]);
+				fmtputc(out, "0123456789ABCDEF"[(c)&15]);
+			} else if (c > 127) {
+				if (verbatim)
+				{
+					for (i = 0; i < n; ++i)
+						fmtputc(out, s[i]);
+				}
+				else
+				{
+					fmtputc(out, '\\');
+					fmtputc(out, 'u');
+					fmtputc(out, "0123456789ABCDEF"[(c>>12)&15]);
+					fmtputc(out, "0123456789ABCDEF"[(c>>8)&15]);
+					fmtputc(out, "0123456789ABCDEF"[(c>>4)&15]);
+					fmtputc(out, "0123456789ABCDEF"[(c)&15]);
+				}
+			} else {
+				if (c == sq || c == eq)
+					fmtputc(out, '\\');
+				fmtputc(out, c);
+			}
+			break;
+		case '\\': fmtputc(out, '\\'); fmtputc(out, '\\'); break;
+		case '\b': fmtputc(out, '\\'); fmtputc(out, 'b'); break;
+		case '\f': fmtputc(out, '\\'); fmtputc(out, 'f'); break;
+		case '\n': fmtputc(out, '\\'); fmtputc(out, 'n'); break;
+		case '\r': fmtputc(out, '\\'); fmtputc(out, 'r'); break;
+		case '\t': fmtputc(out, '\\'); fmtputc(out, 't'); break;
+		}
+		s += n;
+	}
+	fmtputc(out, eq);
+}
+
+static void fmtquote_pdf(struct fmtbuf *out, const char *s, int sq, int eq)
 {
 	int c;
 	fmtputc(out, sq);
-	while ((c = *s++) != 0) {
+	while ((c = (unsigned char)*s++) != 0) {
 		switch (c) {
 		default:
 			if (c < 32 || c > 127) {
@@ -242,23 +288,6 @@ static void fmtname(struct fmtbuf *out, const char *s)
 	}
 }
 
-/*
-	Our customised 'printf'-like string formatter.
-	Takes %c, %d, %s, %u, %x, as usual.
-	Modifiers are not supported except for zero-padding ints (e.g. %02d, %03u, %04x, etc).
-	%g output in "as short as possible hopefully lossless non-exponent" form,
-	see fz_ftoa for specifics.
-	%f and %e output as usual.
-	%C outputs a utf8 encoded int.
-	%M outputs a fz_matrix*. %R outputs a fz_rect*. %P outputs a fz_point*.
-	%n outputs a PDF name (with appropriate escaping).
-	%q and %( output escaped strings in C/PDF syntax.
-	%l{d,u,x} indicates that the values are int64_t.
-	%z{d,u,x} indicates that the value is a size_t.
-
-	user: An opaque pointer that is passed to the emit function.
-	emit: A function pointer called to emit output bytes as the string is being formatted.
-*/
 void
 fz_format_string(fz_context *ctx, void *user, void (*emit)(fz_context *ctx, void *user, int c), const char *fmt, va_list args)
 {
@@ -420,7 +449,7 @@ fz_format_string(fz_context *ctx, void *user, void (*emit)(fz_context *ctx, void
 
 			case 'p':
 				bits = 8 * sizeof(void *);
-				w = 2 * sizeof(void *);
+				z = '0';
 				fmtputc(&out, '0');
 				fmtputc(&out, 'x');
 				/* fallthrough */
@@ -437,6 +466,7 @@ fz_format_string(fz_context *ctx, void *user, void (*emit)(fz_context *ctx, void
 				}
 				break;
 			case 'd':
+			case 'i':
 				if (bits == 64)
 				{
 					i64 = va_arg(args, int64_t);
@@ -468,15 +498,20 @@ fz_format_string(fz_context *ctx, void *user, void (*emit)(fz_context *ctx, void
 				while ((c = *str++) != 0)
 					fmtputc(&out, c);
 				break;
+			case 'Q': /* quoted string (with verbatim unicode) */
+				str = va_arg(args, const char*);
+				if (!str) str = "";
+				fmtquote(&out, str, '"', '"', 1);
+				break;
 			case 'q': /* quoted string */
 				str = va_arg(args, const char*);
 				if (!str) str = "";
-				fmtquote(&out, str, '"', '"');
+				fmtquote(&out, str, '"', '"', 0);
 				break;
 			case '(': /* pdf string */
 				str = va_arg(args, const char*);
 				if (!str) str = "";
-				fmtquote(&out, str, '(', ')');
+				fmtquote_pdf(&out, str, '(', ')');
 				break;
 			case 'n': /* pdf name */
 				str = va_arg(args, const char*);
@@ -506,9 +541,6 @@ static void snprintf_emit(fz_context *ctx, void *out_, int c)
 	++(out->n);
 }
 
-/*
-	A vsnprintf work-alike, using our custom formatter.
-*/
 size_t
 fz_vsnprintf(char *buffer, size_t space, const char *fmt, va_list args)
 {
@@ -525,9 +557,6 @@ fz_vsnprintf(char *buffer, size_t space, const char *fmt, va_list args)
 	return out.n;
 }
 
-/*
-	The non va_list equivalent of fz_vsnprintf.
-*/
 size_t
 fz_snprintf(char *buffer, size_t space, const char *fmt, ...)
 {
@@ -550,13 +579,13 @@ fz_snprintf(char *buffer, size_t space, const char *fmt, ...)
 char *
 fz_asprintf(fz_context *ctx, const char *fmt, ...)
 {
-	int len;
+	size_t len;
 	char *mem;
 	va_list ap;
 	va_start(ap, fmt);
 	len = fz_vsnprintf(NULL, 0, fmt, ap);
 	va_end(ap);
-	mem = fz_malloc(ctx, len+1);
+	mem = Memento_label(fz_malloc(ctx, len+1), "asprintf");
 	va_start(ap, fmt);
 	fz_vsnprintf(mem, len+1, fmt, ap);
 	va_end(ap);

@@ -47,13 +47,13 @@
         android:textColor="#333333"
         android:textSize="14sp" />
 
-    <Button
-        android:id="@+id/sign"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="手写签名"
-        android:textColor="#333333"
-        android:textSize="14sp" />
+<!--    <Button-->
+<!--        android:id="@+id/sign"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="手写签名"-->
+<!--        android:textColor="#333333"-->
+<!--        android:textSize="14sp" />-->
 
 </LinearLayout>

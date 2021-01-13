@@ -4,7 +4,7 @@ android {
 
     compileSdkVersion 29
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -16,27 +16,38 @@ android {
 
         externalNativeBuild {
             cmake {
-                // Passes optional arguments to CMake.
-                arguments '-DANDROID_PLATFORM=android-19', '-DANDROID_TOOLCHAIN=clang'
-
-                // Sets optional flags for the C compiler.
-                cFlags "-D_EXAMPLE_C_FLAG1", "-D_EXAMPLE_C_FLAG2"
-
-                // Sets a flag to enable format macro constants for the C++ compiler.
-                cppFlags "-D__STDC_FORMAT_MACROS -DFT2_BUILD_LIBRARY"
+//                // Passes optional arguments to CMake.
+//                arguments '-DANDROID_PLATFORM=android-16', '-DANDROID_TOOLCHAIN=clang'
+//
+//                // Sets optional flags for the C compiler.
+//                cFlags "-D_EXAMPLE_C_FLAG1", "-D_EXAMPLE_C_FLAG2"
+//
+//                // Sets a flag to enable format macro constants for the C++ compiler.
+//                cppFlags "-D__STDC_FORMAT_MACROS -DFT2_BUILD_LIBRARY"
             }
         }
     }
 
 //    externalNativeBuild {
 //        cmake {
-//            path "CMakeLists.txt"
+//            path "src/main/cpp/CMakeLists.txt"
 //        }
 //    }
+
+    sourceSets.main {
+        jni.srcDirs = []
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
+
     implementation 'com.android.support:appcompat-v7:25.1.0'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 }
