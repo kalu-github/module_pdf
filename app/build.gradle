@@ -22,13 +22,13 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 
     // mupdf
-    implementation project(':lib_mupdf_v1161')
+    implementation project(':lib_mupdf')
 
     // x5
-    implementation project(':lib_tbs_v43967')
+    implementation project(':lib_x5')
 
     // pdfium
-    implementation project(':lib_pdfium_a11')
+    implementation project(':lib_pdfium')
 
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
 }

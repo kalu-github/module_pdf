@@ -1,4 +1,4 @@
 include ':app'
-include ':lib_tbs_v43967'
-include ':lib_mupdf_v1161'
-include ':lib_pdfium_a11'
+include ':lib_x5'
+include ':lib_mupdf'
+include ':lib_pdfium'
