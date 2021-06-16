@@ -41,6 +41,8 @@ https://github.com/ArtifexSoftware/mupdf
 ```
 pdfium-source-android11
 
+https://github.com/chromium/pdfium
+
 https://pdfium.googlesource.com/pdfium.git
 
 https://github.com/barteksc/AndroidPdfViewer.git
